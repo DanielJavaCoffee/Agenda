@@ -102,6 +102,7 @@ public class OuvinteTelaDeCadastroDeProgramaSeriesRegulares implements ActionLis
 
 					ProgramaSeriesRegulares programa = new ProgramaSeriesRegulares(nome, exebicao, canal, dayOfWeeksFinal, horario,
 							data, temporada, genero, estilo);
+					canal.conta(1);
 					centralDeInformacoes.adicionarProgramaDeTV(programa);
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemPrograma.programaSalvo();

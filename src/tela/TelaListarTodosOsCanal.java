@@ -142,6 +142,7 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 		modelo.addColumn("Nome");
 		modelo.addColumn("Forma De Assistir");
 		modelo.addColumn("Link Do Canal Ou Número");
+		modelo.addColumn("Programas cadastrados");
 
 		List<Canal> canais = centralDeInformacoes.getTodosOsCanais();
 
@@ -149,10 +150,11 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 
 		Object[] linhas = new Object[canais.size()];
 		for (Canal canal : canais) {
-			Object[] linha = new Object[3];
+			Object[] linha = new Object[4];
 			linha[0] = canal.getNome();
 			linha[1] = canal.getTipoDoCanal();
 			linha[2] = canal.getLinkOuCanal();
+			linha[3] = canal.getContador();
 			modelo.addRow(linha);
 		}
 

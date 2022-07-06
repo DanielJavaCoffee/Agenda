@@ -54,7 +54,6 @@ public class OuvinteTelaEditarCadastroDeCanal implements ActionListener {
 			exebicao = TipoDeCanal.ASSINATURA_INDIVIDUAL_DE_BROADCASTING;
 		} 
 		
-		
 		if (canal != null) {
 			canal.setNome(nome);
 			canal.setTipoDoCanal(exebicao);

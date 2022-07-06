@@ -97,6 +97,7 @@ public class OuvinteTelaEditarProgramaDeRealityShows implements ActionListener {
 							pr.setDataHiato(data);
 							pr.setTemporada(temporada);
 							
+							canal.conta(1);
 							persistencia.salvarCentral(centralDeInformacoes);
 							MensagemPrograma.programaAtualizado();
 							new TelaListarTodosOsProgramas(null);

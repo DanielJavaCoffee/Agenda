@@ -2,6 +2,7 @@ package ouvinte;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -9,6 +10,7 @@ import entity.Programa;
 import entity.ProgramaContinuo;
 import entity.ProgramaDeRealityShows;
 import entity.ProgramaSeriesRegulares;
+import entity.Usuario;
 import enuns.TipoDePrograma;
 import model.CentralDeInformacoes;
 import model.Persistencia;
@@ -123,9 +125,8 @@ public class OuvinteTelaListarTodosOsProgramas implements ActionListener {
 				} // end for
 
 				if (centralDeInformacoes.AdicionarAgenda(programaDeTV)) {
-
+ 
 					persistencia.salvarCentral(centralDeInformacoes);
-					centralDeInformacoes.recuperarUsuario(null);
 					MensagemAgenda.adicionarNaMinhaAgenda();
 
 				} // end if
@@ -136,4 +137,11 @@ public class OuvinteTelaListarTodosOsProgramas implements ActionListener {
 			MensagemException.numberFormatException(erro);
 		} // end catch
 	} // end actionPErformed
+
+	public void actionPerformedFiltrar(ActionEvent e) {
+		
+		String pesquisa = JOptionPane.showInputDialog("Informe sua pesquisa: ");
+		
+		
+	}
 } // end class

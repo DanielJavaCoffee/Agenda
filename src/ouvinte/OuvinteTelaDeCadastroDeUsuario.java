@@ -45,7 +45,7 @@ public class OuvinteTelaDeCadastroDeUsuario implements ActionListener {
 
 			} else {
 
-				Usuario usuario = new Usuario(nome, email, senha01, null);
+				Usuario usuario = new Usuario(nome, email, senha01);
 				ValidacaoDeCadastroDeUsuario validacao = new ValidacaoDeCadastroDeUsuario();
 				
 				validacao.validarSenha(usuario);

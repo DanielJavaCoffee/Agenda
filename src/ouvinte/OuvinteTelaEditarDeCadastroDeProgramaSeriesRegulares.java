@@ -109,7 +109,8 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 						ps.setTemparada(temporada);
 						ps.setGenero(genero);
 						ps.setEstilo(estilo);
-
+  
+						canal.conta(1);
 						centralDeInformacoes.adicionarProgramaDeTV(programa);
 						persistencia.salvarCentral(centralDeInformacoes);
 						MensagemPrograma.programaSalvo();

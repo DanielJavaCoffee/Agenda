@@ -52,7 +52,7 @@ public class Mensageiro {
             message.setSubject(assunto);
             message.setText(texto);
             Transport.send(message);
-
+           
         } catch (MessagingException e) {
         	MensagemEmail.emailErro();
             e.printStackTrace();

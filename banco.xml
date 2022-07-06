@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<model.CentralDeInformacoes>
+  <todosOsProgramas>
+    <entity.ProgramaContinuo>
+      <nome>Xuxa</nome>
+      <id>1656981918495</id>
+      <canal>
+        <nome>Globo</nome>
+        <tipoDoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoDoCanal>
+        <linkOuCanal>01</linkOuCanal>
+        <id>1656981884174</id>
+        <contador>2</contador>
+      </canal>
+      <horario>20:00</horario>
+      <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
+      <statusDeExebicao>EXIBICAO</statusDeExebicao>
+      <nomeDosApresentadoroes>Xuxa</nomeDosApresentadoroes>
+    </entity.ProgramaContinuo>
+    <entity.ProgramaContinuo>
+      <nome>Mais você</nome>
+      <id>1656982009684</id>
+      <canal reference="../../entity.ProgramaContinuo/canal"/>
+      <horario>00:00</horario>
+      <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
+      <statusDeExebicao>FINALIZADO</statusDeExebicao>
+      <nomeDosApresentadoroes>fatima</nomeDosApresentadoroes>
+    </entity.ProgramaContinuo>
+  </todosOsProgramas>
+  <todosOsCanais>
+    <entity.Canal reference="../../todosOsProgramas/entity.ProgramaContinuo/canal"/>
+  </todosOsCanais>
+  <todosOsUsuarios>
+    <entity.Usuario>
+      <nome>daniel</nome>
+      <email>danielsilvacr123@gmail.com</email>
+      <senha>12345Aa</senha>
+      <id>1656980006333</id>
+    </entity.Usuario>
+  </todosOsUsuarios>
+  <todasAsAgendas/>
+</model.CentralDeInformacoes>

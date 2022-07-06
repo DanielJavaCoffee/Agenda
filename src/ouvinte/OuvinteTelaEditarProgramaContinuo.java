@@ -99,6 +99,7 @@ public class OuvinteTelaEditarProgramaContinuo implements ActionListener {
 							pc.setHorario(horario);
 							pc.setDataHiato(data);
 							
+							canal.conta(1);
 							persistencia.salvarCentral(centralDeInformacoes);
 							MensagemPrograma.programaAtualizado();
 							new TelaListarTodosOsProgramas(null);

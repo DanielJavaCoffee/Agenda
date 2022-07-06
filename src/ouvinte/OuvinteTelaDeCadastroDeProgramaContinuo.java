@@ -80,6 +80,7 @@ public class OuvinteTelaDeCadastroDeProgramaContinuo implements ActionListener {
 
 					ProgramaContinuo programa = new ProgramaContinuo(nome, apresentador, exebicao, canal, null,
 							horario, data);
+					canal.conta(1);
 					centralDeInformacoes.adicionarProgramaDeTV(programa);
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemPrograma.programaSalvo();

@@ -80,6 +80,7 @@ public class OuvinteTelaDeCadastroDeProgramaDeRealityShows implements ActionList
 					} // end else
 					ProgramaDeRealityShows programa = new ProgramaDeRealityShows(nome, apresentador, exebicao, canal,
 							null, horario, data, temporada);
+					canal.conta(1);
 					centralDeInformacoes.adicionarProgramaDeTV(programa);
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemPrograma.programaSalvo();

@@ -127,8 +127,6 @@ public class TelaAgendaDePrograma extends JanelaListarProgramas {
 		Collections.sort(programa);
 
 		Object[] linhas = new Object[programa.size()];
-		
-	
 
 		for (Programa p : programa) {
 

@@ -8,6 +8,8 @@ public class Canal implements Comparable<Canal> {
 	private TipoDeCanal tipoDoCanal;
 	private String linkOuCanal;
 	private long id;
+	private int contador = 0;
+	
 
 	public Canal(String nome, TipoDeCanal tipoDoCanal, String canalOuLink) {
 		this.nome = nome;
@@ -19,6 +21,10 @@ public class Canal implements Comparable<Canal> {
 	public String toString() {
 		return "Canal: " + this.nome + "\n" + "Tipo Do Canal: " + this.tipoDoCanal + "\n"
 				+ "Link Ou Numero Do Canal: " + this.linkOuCanal + "\n" + "ID: " + this.id;
+	}
+	
+	public void conta(int number) {
+		contador += number;
 	}
 
 	public boolean equals(Canal canal) {
@@ -54,6 +60,14 @@ public class Canal implements Comparable<Canal> {
 
 	public long getId() {
 		return id;
+	}
+
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
 	}
 
 	@Override

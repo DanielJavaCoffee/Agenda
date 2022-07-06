@@ -36,6 +36,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 	private JButton buttonAtualizar;
 	private JButton buttonDetalhar;
 	private JButton buttonAdicionarNaAgenda;
+	private JButton buttonFiltrar;
 	private JTextField campoBusca;
 
 	public TelaListarTodosOsProgramas(String titulo) {
@@ -47,6 +48,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		adicionarJButtonExcluir();
 		adicionarJButtonDetalhar();
 		adicionarJButtonAdcionar();
+		adicionarJButtonFiltrar();
 		listarCanal();
 		imagen();
 		setVisible(true);
@@ -144,7 +146,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 	public void adicionarJButtonAdcionar(){
 		
 		buttonAdicionarNaAgenda = new JButton("Adicionar na minha Agenda");
-		buttonAdicionarNaAgenda.setBounds(430, 600, 200, 30);
+		buttonAdicionarNaAgenda.setBounds(430, 600, 250, 30);
 		buttonAdicionarNaAgenda.addActionListener(adicionar());
 		buttonAdicionarNaAgenda.setBackground(new Color(46,139,87));
 		buttonAdicionarNaAgenda.setForeground(Color.WHITE);
@@ -156,6 +158,29 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ouvinte.actionPerformedAdicionarNaAgenda(e);
+			}
+		};
+	}
+	
+	public void adicionarJButtonFiltrar() {
+		
+		buttonFiltrar = new JButton("Filtrar Agenda");
+		buttonFiltrar.setBounds(220, 600, 180, 30);
+		buttonFiltrar.addActionListener(filtrar());
+		buttonFiltrar.setBackground(new Color(46,139,87));
+		buttonFiltrar.setForeground(Color.WHITE);
+		buttonFiltrar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		add(buttonFiltrar);
+		
+	}
+	
+	public ActionListener filtrar() {
+		
+		return new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ouvinte.actionPerformedFiltrar(e);
 			}
 		};
 	}
@@ -276,4 +301,9 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 	public JButton getButtonAdicionarNaAgenda() {
 		return buttonAdicionarNaAgenda;
 	}
+
+	public JButton getButtonFiltrar() {
+		return buttonFiltrar;
+	}
+
 }

@@ -8,8 +8,7 @@ import tela.TelaDeLogin;
 public class Main {
 
 	public static void main(String[] args) {
-		
-		System.out.println("");
+			
 		
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes centralDeInformacoes = persistencia.recuperarCentral();
@@ -18,6 +17,6 @@ public class Main {
 			new TelaDeLogin(null);
 		} else {
 			new TelaDeCadastroDeUsuario(null);
-		}
+		}	
 	}
 }
