@@ -1,13 +1,11 @@
 package tela;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -37,22 +35,11 @@ public class TelaAgendaDePrograma extends JanelaListarProgramas {
 	
 	public TelaAgendaDePrograma(String titulo) {
 		super(titulo);
-		adicionarJLabel();
 		adicionarJButtonVoltar();
 		adicionarJButtonExcluir();
 		adicionarJButtonDetalhar();
 		listarCanal();
 		setVisible(true);
-	}
-
-
-	private void adicionarJLabel() {
-
-		JLabel jLabel = new JLabel("TELA DE AGENDA, REMOVER, DETALHAR", JLabel.CENTER);
-		jLabel.setBackground(Color.GRAY);
-		jLabel.setOpaque(true);
-		jLabel.setBounds(0, 0, 1200, 50);
-		add(jLabel);
 	}
 
 	private void adicionarJButtonVoltar() {
@@ -187,7 +174,7 @@ public class TelaAgendaDePrograma extends JanelaListarProgramas {
 		}
 		JTable tabela = new JTable(modelo);
 		JScrollPane painelTabela = new JScrollPane(tabela);
-		painelTabela.setBounds(80, 60, 1000, 400);
+		painelTabela.setBounds(80, 120, 1000, 400);
 		add(painelTabela);
 	}
 

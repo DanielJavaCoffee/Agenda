@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
+import model.AdicionarJLabel;
 import model.SorteioDeTelaImagens;
 import model.Util;
 import ouvinte.OuvinteTelaDeCadastroDeCanal;
@@ -32,27 +33,15 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 		adicionarJButtonSalvar();
 		adicionarImagem();
 		setVisible(true);
-
 	}
 
 	private void adicionarJLabel() {
-
-		JLabel nomeDoCanal = new JLabel("Nome Do Canal:");
-		nomeDoCanal.setBounds(30, 100, 250, 30);
-		nomeDoCanal.setFont(Util.font);
-	    nomeDoCanal.setOpaque(true);
-		nomeDoCanal.setBackground(new Color(46,139,87));
-		nomeDoCanal.setForeground(Color.WHITE);
-		add(nomeDoCanal);
-
-		JLabel formarDeAssistir = new JLabel("Link Ou Número Do Canal:");
-		formarDeAssistir.setBounds(30, 180, 250, 30);
-		formarDeAssistir.setFont(Util.font);
-		formarDeAssistir.setOpaque(true);
-		formarDeAssistir.setBackground(new Color(46, 139, 87));
-		formarDeAssistir.setForeground(Color.WHITE);
-		add(formarDeAssistir);
-
+		
+		AdicionarJLabel nomeDeCanal = new AdicionarJLabel();
+		add(nomeDeCanal.adicionarJLabel("Nome Do Canal:", 30, 100, 250, 30));
+		
+		AdicionarJLabel FormaDeAssistir = new AdicionarJLabel();
+		add(FormaDeAssistir.adicionarJLabel("Link Ou Número Do Canal:", 30, 180, 250, 30));
 	}
 
 	private void adicionarJTextField() {

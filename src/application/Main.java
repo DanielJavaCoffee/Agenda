@@ -4,9 +4,6 @@ import java.time.DayOfWeek;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
-import javax.swing.JOptionPane;
-
-import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
 import model.Persistencia;
 import tela.TelaDeCadastroDeUsuario;

@@ -1,10 +1,8 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.DayOfWeek;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,7 +42,6 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 	public TelaListarTodosOsProgramas(String titulo) {
 		super(titulo);
 
-		adicionarJLabel();
 		adicionarJButtonVoltar();
 		adicionarJButtonAtualizar();
 		adicionarJButtonExcluir();
@@ -54,18 +51,6 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		listarCanal();
 		imagen();
 		setVisible(true);
-	}
-
-	private void adicionarJLabel() {
-
-		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
-		JLabel jLabel = new JLabel("TELA DE LISTAR PROGRAMA, EXCLUIR, DETALHAR, ADICIONAR NA AGENDA E ATUALIZAR", icon, JLabel.CENTER);
-		jLabel.setBounds(0, 0, 1200, 70);
-		jLabel.setFont(Util.fontTitulo);
-		jLabel.setOpaque(true);
-		jLabel.setBackground(new Color(46,139,87));
-		jLabel.setForeground(Color.WHITE);
-		add(jLabel);
 	}
 
 	private void adicionarJButtonVoltar() {
@@ -267,7 +252,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		JTable tabela = new JTable(modelo);
 		tabela.setBackground(Color.green);
 		JScrollPane painelTabela = new JScrollPane(tabela);
-		painelTabela.setBounds(80, 100, 1000, 400);
+		painelTabela.setBounds(80, 120, 1000, 400);
 		add(painelTabela);
 	}
 	
@@ -277,7 +262,6 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
         imagem.setIcon(new ImageIcon("src/Imagens/pipocaFilme.jpeg"));
         imagem.setBounds(0, 30, 1200, 700);
         add(imagem);
-		
 	}
 
 	public JButton getButtonVoltar() {

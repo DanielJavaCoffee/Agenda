@@ -20,16 +20,17 @@ import javax.swing.text.MaskFormatter;
 import entity.Canal;
 import entity.ProgramaSeriesRegulares;
 import janelas.JanelaTelaCadastroDePrograma;
+import model.AdicionarJLabel;
 import model.CentralDeInformacoes;
 import model.Persistencia;
 import model.Util;
-import ouvinte.OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares;
+import ouvinte.OuvinteTelaEditarCadastroDeProgramaSeriesRegulares;
 
 public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadastroDePrograma {
 
 	Persistencia persistencia = new Persistencia();
 	CentralDeInformacoes centralDeInformacoes = persistencia.recuperarCentral();
-	OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares ouvinte = new OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares(this);
+	OuvinteTelaEditarCadastroDeProgramaSeriesRegulares ouvinte = new OuvinteTelaEditarCadastroDeProgramaSeriesRegulares(this);
 
 	private JTextField campoNomeDoPrograma;
 	private JTextField campoIDCanal;
@@ -94,59 +95,27 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 		JScrollPane painelTabela = new JScrollPane(tabela);
 		painelTabela.setBounds(40, 100, 800, 190);
 		add(painelTabela);
-
 	}
 
 	private void adicionarJLabel() {
 
-		JLabel nome = new JLabel("Nome Do Programa: ");
-		nome.setBounds(40, 300, 220, 30);
-		nome.setFont(Util.font);
-	    nome.setOpaque(true);
-		nome.setBackground(new Color(46,139,87));
-		nome.setForeground(Color.WHITE);
-		add(nome);
-
-		JLabel id = new JLabel("ID Do Canal: ");
-		id.setBounds(40, 350, 220, 30);
-		id.setFont(Util.font);
-	    id.setOpaque(true);
-		id.setBackground(new Color(46,139,87));
-		id.setForeground(Color.WHITE);
-		add(id);
-
-		JLabel data = new JLabel("Dia/s Do Programa: ");
-		data.setBounds(40, 400, 220, 30);
-		data.setFont(Util.font);
-	    data.setOpaque(true);
-		data.setBackground(new Color(46,139,87));
-		data.setForeground(Color.WHITE);
-		add(data);
-
-		JLabel horario = new JLabel("Horario Do Programa: ");
-		horario.setBounds(40, 450, 220, 30);
-		horario.setFont(Util.font);
-	    horario.setOpaque(true);
-		horario.setBackground(new Color(46,139,87));
-		horario.setForeground(Color.WHITE);
-		add(horario);
+		AdicionarJLabel nome = new AdicionarJLabel();
+		add(nome.adicionarJLabel("Nome Do Programa:", 40, 300, 220, 30));
 		
-		JLabel genero = new JLabel("Genero Do Programa: ");
-		genero.setBounds(40, 500, 220, 30);
-		genero.setFont(Util.font);
-	    genero.setOpaque(true);
-		genero.setBackground(new Color(46,139,87));
-		genero.setForeground(Color.WHITE);
-		add(genero);
+		AdicionarJLabel idDoCanal = new AdicionarJLabel();
+		add(idDoCanal.adicionarJLabel("ID Do Canal:", 40, 350, 220, 30));
 		
-		JLabel temporada = new JLabel("Temporada: ");
-		temporada.setBounds(40, 550, 220, 30);
-		temporada.setFont(Util.font);
-	    temporada.setOpaque(true);
-		temporada.setBackground(new Color(46,139,87));
-		temporada.setForeground(Color.WHITE);
-		add(temporada);
+		AdicionarJLabel diasDaSemana = new AdicionarJLabel();
+		add(diasDaSemana.adicionarJLabel("Dia/s Do Programa:", 40, 400, 220, 30));
 		
+		AdicionarJLabel horarioDoPrograma = new AdicionarJLabel();
+		add(horarioDoPrograma.adicionarJLabel("Horario Do Programa:", 40, 450, 220, 30));
+		
+		AdicionarJLabel genero = new AdicionarJLabel();
+		add(genero.adicionarJLabel("Genero Do Programa:", 40, 500, 220, 30));
+		
+		AdicionarJLabel temporada = new AdicionarJLabel();
+		add(temporada.adicionarJLabel("Temporada:", 40, 550, 220, 30));
 	}
 
 	private void adicionarJTextFild() {

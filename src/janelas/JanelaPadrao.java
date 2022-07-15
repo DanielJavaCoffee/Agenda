@@ -68,7 +68,7 @@ public class JanelaPadrao extends JFrame{
 		add(jLabel);
 	}
 	
-    private void addTema() {
+	public void addTema() {
         try {
             // AQUI VOCE SETA O NOME DA CLASSE REFERENTE A CADA TEMA !
             String tema = "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel";
@@ -80,4 +80,5 @@ public class JanelaPadrao extends JFrame{
             System.out.println("Erro LAF : " + e.getMessage());
         }
     }
+    
 }

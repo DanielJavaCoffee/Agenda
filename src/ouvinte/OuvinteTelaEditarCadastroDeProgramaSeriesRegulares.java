@@ -19,7 +19,7 @@ import personalizedMessage.MensagemUsuario;
 import tela.TelaEditarCadastroDeProgramaSeriesRegulares;
 import tela.TelaListarTodosOsProgramas;
 
-public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements ActionListener {
+public class OuvinteTelaEditarCadastroDeProgramaSeriesRegulares implements ActionListener {
 
 	Persistencia persistencia = new Persistencia();
 	CentralDeInformacoes centralDeInformacoes = persistencia.recuperarCentral();
@@ -29,7 +29,7 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 		return telaCadastroDePrograma;
 	}
 
-	public OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares(TelaEditarCadastroDeProgramaSeriesRegulares tela) {
+	public OuvinteTelaEditarCadastroDeProgramaSeriesRegulares(TelaEditarCadastroDeProgramaSeriesRegulares tela) {
 		this.telaCadastroDePrograma = tela;
 	}
 

@@ -1,7 +1,6 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
+import model.AdicionarJLabel;
 import model.SorteioDeTelaImagens;
 import model.Util;
 import ouvinte.OuvinteTelaDeCadastroDeUsuario;
@@ -26,8 +26,6 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 	private JPasswordField campoSenha01;
 	private JPasswordField campoSenha02;
 	private JButton buttonSalvar;
-	
-	
 
 	public TelaDeCadastroDeUsuario(String titulo) {
 		super(titulo, "CADASTRAMENTO DO USUÁRIO");
@@ -36,41 +34,21 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		buttonSalvar();
 		adicionarImagem();
 		setVisible(true);
-		
 	}
 	
 	private void adicionarJLabel() {
-		JLabel nome = new JLabel("Nome:", JLabel.CENTER);
-		nome.setBounds(30, 90, 95, 30);
-		nome.setFont(Util.font);
-		nome.setOpaque(true);
-		nome.setBackground(new Color(46,139,87));
-		nome.setForeground(Color.WHITE);
-		add(nome);
 		
-		JLabel email = new JLabel("Email:", JLabel.CENTER);
-		email.setBounds(30, 160, 95, 30);
-		email.setFont(Util.font);
-		email.setOpaque(true);
-		email.setBackground(new Color(46,139,87));
-		email.setForeground(Color.WHITE);
-		add(email);
+		AdicionarJLabel nome = new AdicionarJLabel();
+		add(nome.adicionarJLabel("Nome:", 30, 90, 95, 30));
 		
-		JLabel senha01 = new JLabel("Senha:", JLabel.CENTER);
-		senha01.setBounds(30, 230, 95, 30);
-		senha01.setFont(Util.font);
-		senha01.setOpaque(true);
-		senha01.setBackground(new Color(46,139,87));
-		senha01.setForeground(Color.WHITE);
-		add(senha01);
+		AdicionarJLabel email = new AdicionarJLabel();
+		add(email.adicionarJLabel("Email:", 30, 160, 95, 30));
 		
-		JLabel senha02 = new JLabel("Senha: ", JLabel.CENTER);
-		senha02.setBounds(30, 300, 95, 30);
-		senha02.setFont(Util.font);
-		senha02.setOpaque(true);
-		senha02.setBackground(new Color(46,139,87));
-		senha02.setForeground(Color.WHITE);
-		add(senha02);
+		AdicionarJLabel senha01 = new AdicionarJLabel();
+		add(senha01.adicionarJLabel("Senha:",30, 230, 95, 30));
+		
+		AdicionarJLabel senha02 = new AdicionarJLabel();
+		add(senha02.adicionarJLabel("Senha:", 30, 300, 95, 30));
 	}
 	
 	private void adicionarJTextFiled() {
@@ -107,7 +85,6 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 			
 			public void actionPerformed(ActionEvent e) {
 				ouvinte.actionPerformed(e);
-				
 			}
 		};
 	}

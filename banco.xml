@@ -5,11 +5,11 @@
       <nome>Xuxa</nome>
       <id>1657849239112</id>
       <canal>
-        <nome>Globo</nome>
+        <nome>SBT</nome>
         <tipoDoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoDoCanal>
         <linkOuCanal>01</linkOuCanal>
         <id>1657849198215</id>
-        <contador>3</contador>
+        <contador>5</contador>
       </canal>
       <horario>07:00</horario>
       <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
@@ -50,6 +50,34 @@
       <nomeDosApresentadores>Gaby</nomeDosApresentadores>
       <temporada>22</temporada>
     </entity.ProgramaDeRealityShows>
+    <entity.ProgramaDeRealityShows>
+      <nome>Jogo</nome>
+      <id>1657914552706</id>
+      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
+      <horario>09:00</horario>
+      <tipoDePrograma>REALITY_SHOWS</tipoDePrograma>
+      <statusDeExebicao>HIATO</statusDeExebicao>
+      <dataHiato>2023-07-12 03:00:00.0 UTC</dataHiato>
+      <diasDaSemana>
+        <string>quinta-feira</string>
+      </diasDaSemana>
+      <nomeDosApresentadores>Bay</nomeDosApresentadores>
+      <temporada>1</temporada>
+    </entity.ProgramaDeRealityShows>
+    <entity.ProgramaSeriesRegulares>
+      <nome>kay</nome>
+      <id>1657914640905</id>
+      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
+      <horario>07:00</horario>
+      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
+      <statusDeExebicao>EXIBICAO</statusDeExebicao>
+      <diasDaSemana>
+        <string>sábado</string>
+      </diasDaSemana>
+      <genero>kay</genero>
+      <estilo>ANIMADA</estilo>
+      <temparada>2</temparada>
+    </entity.ProgramaSeriesRegulares>
   </todosOsProgramas>
   <todosOsCanais>
     <entity.Canal reference="../../todosOsProgramas/entity.ProgramaSeriesRegulares/canal"/>
@@ -59,7 +87,7 @@
       <nome>daniel</nome>
       <email>danielsilvacr123@gmail.com</email>
       <senha>12345Aa</senha>
-      <id>1657849186056</id>
+      <id>1657916710567</id>
     </entity.Usuario>
   </todosOsUsuarios>
   <todasAsAgendas/>

@@ -15,6 +15,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
+import model.AdicionarJButton;
+import model.AdicionarJLabel;
 import model.SorteioDeTelaImagens;
 import model.Util;
 import ouvinte.OuvinteTelaDeLogin;
@@ -27,6 +29,7 @@ public class TelaDeLogin extends JanelaPadrao {
 	private JPasswordField campoSenha;
 	private JButton buttonProseguir;
 	private JButton buttonEsqueciSenha;
+	private AdicionarJButton botaoProseguir;
 
 	public TelaDeLogin(String titulo) {
 		super(titulo, "TELA DE LOGUIN");
@@ -47,54 +50,15 @@ public class TelaDeLogin extends JanelaPadrao {
 		jLabel.setOpaque(true);
 		jLabel.setBackground(new Color(46, 139, 87));
 		jLabel.setForeground(Color.WHITE);
-		jLabel.addMouseListener(new MouseListener() {
-			
-		public void mouseReleased(MouseEvent e) {
-
-		}
-
-		public void mousePressed(MouseEvent e) {
-
-		}
-
-		public void mouseExited(MouseEvent e) {
-				jLabel.setBackground(new Color(46, 139, 87));
-				jLabel.repaint();
-				Cursor c = new Cursor(Cursor.DEFAULT_CURSOR);
-				setCursor(c);
-		}
-
-		public void mouseEntered(MouseEvent e) {
-				jLabel.setBackground(Color.RED);
-				jLabel.repaint();
-				Cursor c = new Cursor(Cursor.HAND_CURSOR);
-				setCursor(c);
-		}
-
-		public void mouseClicked(MouseEvent e) {
-				JOptionPane.showMessageDialog(null, "Isso não é um site");
-			}
-		});
-		add(jLabel);
 	}
 
 	private void adicionarJLabel() {
 
-		JLabel email = new JLabel("Email:", JLabel.CENTER);
-		email.setBounds(30, 130, 95, 30);
-		email.setFont(Util.font);
-		email.setOpaque(true);
-		email.setBackground(new Color(46, 139, 87));
-		email.setForeground(Color.WHITE);
-		add(email);
+		AdicionarJLabel email = new AdicionarJLabel();
+		add(email.adicionarJLabel("Email:", 30, 130, 95, 30));
 
-		JLabel senha01 = new JLabel("Senha:", JLabel.CENTER);
-		senha01.setBounds(30, 230, 95, 30);
-		senha01.setFont(Util.font);
-		senha01.setOpaque(true);
-		senha01.setBackground(new Color(46, 139, 87));
-		senha01.setForeground(Color.WHITE);
-		add(senha01);
+		AdicionarJLabel senha01 = new AdicionarJLabel();
+		add(senha01.adicionarJLabel("Senha:", 30, 230, 95, 30));
 	}
 
 	private void adicionarJTextFiled() {
@@ -148,7 +112,7 @@ public class TelaDeLogin extends JanelaPadrao {
 			}
 		};
 	}
-	
+
 	public void adicionarImagem() {
 
 		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
@@ -174,4 +138,9 @@ public class TelaDeLogin extends JanelaPadrao {
 	public JButton getButtonEsqueciSenha() {
 		return buttonEsqueciSenha;
 	}
+
+	public AdicionarJButton getBotao() {
+		return botaoProseguir;
+	}
+
 }

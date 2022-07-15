@@ -1,7 +1,6 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
@@ -20,6 +19,7 @@ import javax.swing.text.MaskFormatter;
 import entity.Canal;
 import entity.ProgramaContinuo;
 import janelas.JanelaTelaCadastroDePrograma;
+import model.AdicionarJLabel;
 import model.CentralDeInformacoes;
 import model.Persistencia;
 import model.Util;
@@ -99,45 +99,20 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 
 	private void adicionarJLabel() {
 
-		JLabel nome = new JLabel("Nome Do Programa: ");
-		nome.setBounds(40, 300, 240, 30);
-		nome.setFont(Util.font);
-	    nome.setOpaque(true);
-		nome.setBackground(new Color(46,139,87));
-		nome.setForeground(Color.WHITE);
-		add(nome);
-
-		JLabel id = new JLabel("ID Do Canal: ");
-		id.setBounds(40, 350, 240, 30);
-		id.setFont(Util.font);
-	    id.setOpaque(true);
-		id.setBackground(new Color(46,139,87));
-		id.setForeground(Color.WHITE);
-		add(id);
-
-		JLabel data = new JLabel("Dia/s Do Programa: ");
-		data.setBounds(40, 400, 240, 30);
-		data.setFont(Util.font);
-	    data.setOpaque(true);
-		data.setBackground(new Color(46,139,87));
-		data.setForeground(Color.WHITE);
-		add(data);
-
-		JLabel horario = new JLabel("Horario Do Programa: ");
-		horario.setBounds(40, 450, 240, 30);
-		horario.setFont(Util.font);
-	    horario.setOpaque(true);
-		horario.setBackground(new Color(46,139,87));
-		horario.setForeground(Color.WHITE);
-		add(horario);
+		AdicionarJLabel nome = new AdicionarJLabel();
+		add(nome.adicionarJLabel("Nome Do Programa:", 40, 300, 240, 30));
 		
-		JLabel apresentador = new JLabel("Nome Do Apresentador:");
-		apresentador.setBounds(40, 500, 240, 30);
-		apresentador.setFont(Util.font);
-	    apresentador.setOpaque(true);
-		apresentador.setBackground(new Color(46,139,87));
-		apresentador.setForeground(Color.WHITE);
-		add(apresentador);
+		AdicionarJLabel idDoCanal = new AdicionarJLabel();
+		add(idDoCanal.adicionarJLabel("ID Do Canal:", 40, 350, 240, 30));
+		
+		AdicionarJLabel diasDaSemana = new AdicionarJLabel();
+		add(diasDaSemana.adicionarJLabel("Dia/s Do Programa:", 40, 400, 240, 30));
+		
+		AdicionarJLabel horarioDoPrograma = new AdicionarJLabel();
+		add(horarioDoPrograma.adicionarJLabel("Horario Do Programa:", 40, 450, 240, 30));
+		
+		AdicionarJLabel nomeDoApresentador = new AdicionarJLabel();
+		add(nomeDoApresentador.adicionarJLabel("Nome Do Apresentador:", 40, 500, 240, 30));
 	}
 
 	private void adicionarJTextFild() {
