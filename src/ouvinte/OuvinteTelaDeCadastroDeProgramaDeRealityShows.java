@@ -3,17 +3,14 @@ package ouvinte;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 import entity.Canal;
 import entity.ProgramaDeRealityShows;
 import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
+import model.DiasDaSemana;
 import model.Persistencia;
+import model.StatusHiato;
 import personalizedMessage.MensagemCanal;
 import personalizedMessage.MensagemException;
 import personalizedMessage.MensagemPrograma;
@@ -37,55 +34,44 @@ public class OuvinteTelaDeCadastroDeProgramaDeRealityShows implements ActionList
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		
+		telaCadastroDePrograma.dispose();
 		new TelaDeMenu(null);
-		telaCadastroDePrograma.setVisible(false);
+		
 	} // end action
 
 	public void actionPerformedSalvar(ActionEvent e) {
 
 		try {
 
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-			Date data = null;
 			String nome = telaCadastroDePrograma.getCampoNomeDoPrograma().getText();
 			long id = Long.parseLong(telaCadastroDePrograma.getCampoIDCanal().getText());
 			String horario = telaCadastroDePrograma.getCampoHorario().getText();
 			String apresentador = telaCadastroDePrograma.getCampoApresentador().getText();
 			String temporada = telaCadastroDePrograma.getCampoTemporada().getText();
-
+			String diasDaSemana[] = telaCadastroDePrograma.getCampoDiasDaSemana().getText().split(", ");
+			
 			if (nome.isBlank() || horario.isBlank() || apresentador.isBlank() || temporada.isBlank()) {
 				MensagemUsuario.usuarioCampoVazio();
 			} else {
-
+				
 				Canal canal = centralDeInformacoes.recuperarCanalId(id);
 
 				if (canal != null) {
 
-					String[] status = { "Exibição", "Hiato", "Finalizado", "Cancelado" };
-					String entradaStatus = (String) JOptionPane.showInputDialog(null, "Estilo Dá Séries: ", "",
-							JOptionPane.WARNING_MESSAGE, null, status, status[0]);
-
-					StatusDeExebicao exebicao = null;
-
-					if (status[0] == entradaStatus) {
-						exebicao = StatusDeExebicao.EXIBICAO;
-					} else if (status[1] == entradaStatus) {
-						exebicao = StatusDeExebicao.HIATO;
-						data = formatar.parse(JOptionPane.showInputDialog("Data de exebição: Separe por barras /. "));
-
-					} else if (status[2] == entradaStatus) {
-						exebicao = StatusDeExebicao.FINALIZADO;
-					} else {
-						exebicao = StatusDeExebicao.CANCELADO;
-					} // end else
-					ProgramaDeRealityShows programa = new ProgramaDeRealityShows(nome, apresentador, exebicao, canal,
-							null, horario, data, temporada);
+					StatusHiato status = new StatusHiato();
+					StatusDeExebicao statusFinal = status.statusDeExebicao();
+					String dias[] = DiasDaSemana.dias(diasDaSemana);
+						
+					ProgramaDeRealityShows programa = new ProgramaDeRealityShows(nome, apresentador, statusFinal, canal,
+							dias, horario, status.getData(), temporada);
 					canal.conta(1);
 					centralDeInformacoes.adicionarProgramaDeTV(programa);
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemPrograma.programaSalvo();
+					telaCadastroDePrograma.dispose();
 					new TelaCadastroDeProgramaSeriesRegulares(null);
-					telaCadastroDePrograma.setVisible(false);
+					
 				} else {
 					MensagemCanal.canalNaoEncontardo();
 				} // end else
@@ -94,8 +80,6 @@ public class OuvinteTelaDeCadastroDeProgramaDeRealityShows implements ActionList
 			MensagemException.numberFormatException(number);
 		} catch (HeadlessException e1) {
 			e1.printStackTrace();
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		} // end catch
-	} // end action
+		}
+	} 
 } // end class

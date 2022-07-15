@@ -3,18 +3,15 @@ package ouvinte;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 import entity.Canal;
 import entity.Programa;
 import entity.ProgramaContinuo;
 import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
+import model.DiasDaSemana;
 import model.Persistencia;
+import model.StatusHiato;
 import personalizedMessage.MensagemCanal;
 import personalizedMessage.MensagemException;
 import personalizedMessage.MensagemPrograma;
@@ -48,15 +45,11 @@ public class OuvinteTelaEditarProgramaContinuo implements ActionListener {
 
 		try {
 
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-
-			Date data = null;
 			String nome = editarProgramaContinuo.getCampoNomeDoPrograma().getText();
 			long id = Long.parseLong(editarProgramaContinuo.getCampoIDCanal().getText());
 			String horario = editarProgramaContinuo.getCampoHorario().getText();
-			String dia = editarProgramaContinuo.getCampoDiasDaSemana().getText();
+			String diasDaSemana[] = editarProgramaContinuo.getCampoDiasDaSemana().getText().split(", ");
 			String apresentador = editarProgramaContinuo.getCampoApresentador().getText();
-			dia.toUpperCase();
 			long idPrograma = Long.parseLong(editarProgramaContinuo.getCampoID().getText());
 
 			if (nome.isBlank() || horario.isBlank()) {
@@ -67,22 +60,9 @@ public class OuvinteTelaEditarProgramaContinuo implements ActionListener {
 
 				if (canal != null) {
 
-					String[] status = { "Exibição", "Hiato", "Finalizado", "Cancelado" };
-					String entradaStatus = (String) JOptionPane.showInputDialog(null, "Status De Exebição: ", "",
-							JOptionPane.WARNING_MESSAGE, null, status, status[0]);
-
-					StatusDeExebicao exebicao = null;
-
-					if (status[0] == entradaStatus) {
-						exebicao = StatusDeExebicao.EXIBICAO;
-					} else if (status[1] == entradaStatus) {
-						exebicao = StatusDeExebicao.HIATO;
-						data = formatar.parse(JOptionPane.showInputDialog("Data de exebição: Separe por barras /. "));
-					} else if (status[2] == entradaStatus) {
-						exebicao = StatusDeExebicao.FINALIZADO;
-					} else {
-						exebicao = StatusDeExebicao.CANCELADO;
-					} // end else
+					StatusHiato status = new StatusHiato();
+					StatusDeExebicao statusFinal = status.statusDeExebicao();
+					String dias[] = DiasDaSemana.dias(diasDaSemana);
 
 					Programa programa = centralDeInformacoes.recuperarProgramaDeTVporId(idPrograma);
 
@@ -93,29 +73,26 @@ public class OuvinteTelaEditarProgramaContinuo implements ActionListener {
 
 							pc.setNome(nome);
 							pc.setNomeDoApresentador(apresentador);
-							pc.setStatusDeExebicao(exebicao);
+							pc.setStatusDeExebicao(statusFinal);
 							pc.setCanal(canal);
-							pc.setDiasDaSemana(null);
+							pc.setDiasDaSemana(dias);
 							pc.setHorario(horario);
-							pc.setDataHiato(data);
+							pc.setDataHiato(status.getData());
 							
 							canal.conta(1);
 							persistencia.salvarCentral(centralDeInformacoes);
 							MensagemPrograma.programaAtualizado();
 							new TelaListarTodosOsProgramas(null);
 							editarProgramaContinuo.setVisible(false);
-						}
+						} // end if
 					} else {
 						MensagemCanal.canalNaoEncontardo();
-					}
-				}
-			}  
+					} // end else
+				} // end if
+			} // end else 
 		} catch (NumberFormatException number) {
 			MensagemException.numberFormatException(number);
 		} catch (HeadlessException e1) {
-			e1.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} // end catch
 	}

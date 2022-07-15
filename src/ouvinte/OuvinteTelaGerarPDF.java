@@ -28,8 +28,9 @@ public class OuvinteTelaGerarPDF implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {	
+		
+		telaGerarPDF.dispose();
 		new TelaDeMenu(null);
-		telaGerarPDF.setVisible(false);	
 	}
 
 	public void actionPerformedGerarPDF(ActionEvent e) {

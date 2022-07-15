@@ -33,8 +33,8 @@ public class OuvinteTelaDeCadastroDeCanal implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		telaDeCadastroDeCanal.dispose();
 		new TelaDeMenu(null);
-		telaDeCadastroDeCanal.setVisible(false);
 
 	} // end actionPerformed
 
@@ -81,9 +81,9 @@ public class OuvinteTelaDeCadastroDeCanal implements ActionListener {
 			centralDeInformacoes.salvarCanal(canal);
 			persistencia.salvarCentral(centralDeInformacoes);
 			MensagemCanal.canalSalvo();
+			telaDeCadastroDeCanal.dispose();
 			new TelaDeCadastroDeCanal(null);
-			telaDeCadastroDeCanal.setVisible(false);
-
+			
 		} catch (Exception erro) {
 			MensagemException.exception(erro);
 		} // catch

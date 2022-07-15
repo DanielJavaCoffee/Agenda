@@ -1,7 +1,6 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,6 +12,7 @@ import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
 import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaDeCadastroDeCanal;
 
 public class TelaDeCadastroDeCanal extends JanelaPadrao {
@@ -25,8 +25,7 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 	private JButton buttonSalvar;
 
 	public TelaDeCadastroDeCanal(String titulo) {
-		super(titulo);
-		titulo();
+		super(titulo,"CADASTRAMENTO DE CANAL");
 		adicionarJLabel();
 		adicionarJTextField();
 		adicionarJButtonVoltar();
@@ -36,22 +35,11 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 
 	}
 
-	private void titulo() {
-		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
-		JLabel jLabel = new JLabel("CADASTRAMENTO DE CANAL", icon, JLabel.CENTER);
-		jLabel.setBounds(0, 0, 700, 70);
-		jLabel.setFont(new Font("Impact",Font.ITALIC, 30));
-		jLabel.setOpaque(true);
-		jLabel.setBackground(new Color(46,139,87));
-		jLabel.setForeground(Color.WHITE);
-		add(jLabel);
-	}
-
 	private void adicionarJLabel() {
 
 		JLabel nomeDoCanal = new JLabel("Nome Do Canal:");
 		nomeDoCanal.setBounds(30, 100, 250, 30);
-		nomeDoCanal.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		nomeDoCanal.setFont(Util.font);
 	    nomeDoCanal.setOpaque(true);
 		nomeDoCanal.setBackground(new Color(46,139,87));
 		nomeDoCanal.setForeground(Color.WHITE);
@@ -59,7 +47,7 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 
 		JLabel formarDeAssistir = new JLabel("Link Ou Número Do Canal:");
 		formarDeAssistir.setBounds(30, 180, 250, 30);
-		formarDeAssistir.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		formarDeAssistir.setFont(Util.font);
 		formarDeAssistir.setOpaque(true);
 		formarDeAssistir.setBackground(new Color(46, 139, 87));
 		formarDeAssistir.setForeground(Color.WHITE);
@@ -85,7 +73,7 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 		buttonVoltar.addActionListener(voltar());
 		buttonVoltar.setBackground(new Color(46,139,87));
 		buttonVoltar.setForeground(Color.WHITE);
-		buttonVoltar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
 	}
 
@@ -105,7 +93,7 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 		buttonSalvar.addActionListener(salvar());
 		buttonSalvar.setBackground(new Color(46,139,87));
 		buttonSalvar.setForeground(Color.WHITE);
-		buttonSalvar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonSalvar.setFont(Util.font);
 		add(buttonSalvar);
 	}
 
@@ -120,13 +108,13 @@ public class TelaDeCadastroDeCanal extends JanelaPadrao {
 	}
 	
 	public void adicionarImagem() {
-		
+
 		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
-		
+
 		JLabel imagem = new JLabel();
-        imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
-        imagem.setBounds(0, 30, 700, 450);
-        add(imagem);
+		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
+		imagem.setBounds(0, 30, 700, 500);
+		add(imagem);
 	}
 
 	public JTextField getCampoNome() {

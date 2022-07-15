@@ -1,6 +1,5 @@
 package entity;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
 import enuns.EstiloSeriesRegulares;
@@ -13,7 +12,7 @@ public class ProgramaSeriesRegulares extends Programa {
 	private EstiloSeriesRegulares estilo;
 	private String temparada;
 
-	public ProgramaSeriesRegulares(String nome, StatusDeExebicao exebicao, Canal canal, DayOfWeek[] dias,
+	public ProgramaSeriesRegulares(String nome, StatusDeExebicao exebicao, Canal canal, String[] dias,
 			String horario, Date data, String temporada, String genero, EstiloSeriesRegulares estilo) {
 
 		this.setTipoDePrograma(TipoDePrograma.SERIES_REGULARES);

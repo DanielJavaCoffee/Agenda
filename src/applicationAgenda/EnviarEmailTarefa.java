@@ -23,10 +23,6 @@ public class EnviarEmailTarefa extends TimerTask {
 		SimpleDateFormat formatar = new SimpleDateFormat("hh:m");
 		String hora = formatar.format(date);
 		StatusDeExebicao status = StatusDeExebicao.EXIBICAO;
-
-	//	String dez[] = hora.split(":");
-	//	int valor = Integer.parseInt(dez[1]);
-	//	valor = -10;
 		
 			for (int i = 0; i < centralDeInformacoes.getTodasAsAgendas().size(); i++) {
 

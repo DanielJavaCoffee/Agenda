@@ -29,8 +29,9 @@ public class OuvinteTelaAgendaDePrograma implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 
+		telaAgendaDePrograma.dispose();
 		new TelaDeMenu(null);
-		telaAgendaDePrograma.setVisible(false);
+		
 	}
 
 	public void actionPerformedExcluir(ActionEvent e) {

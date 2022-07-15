@@ -10,6 +10,6 @@ public enum TipoDeCanal {
 	
 	public String valor;
 	TipoDeCanal(String string) {
-		valor = string;
+		this.valor = string;
 	}
 }

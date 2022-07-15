@@ -1,11 +1,10 @@
 package janelas;
 
-import java.awt.Color;
-
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+@SuppressWarnings("serial")
 public class Janela extends JFrame {
 
 	public Janela(String titulo) {

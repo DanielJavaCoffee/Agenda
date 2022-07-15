@@ -2,7 +2,6 @@ package ouvinte;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -10,7 +9,6 @@ import entity.Programa;
 import entity.ProgramaContinuo;
 import entity.ProgramaDeRealityShows;
 import entity.ProgramaSeriesRegulares;
-import entity.Usuario;
 import enuns.TipoDePrograma;
 import model.CentralDeInformacoes;
 import model.Persistencia;

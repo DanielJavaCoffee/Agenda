@@ -1,40 +1,65 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <model.CentralDeInformacoes>
   <todosOsProgramas>
-    <entity.ProgramaContinuo>
+    <entity.ProgramaSeriesRegulares>
       <nome>Xuxa</nome>
-      <id>1656981918495</id>
+      <id>1657849239112</id>
       <canal>
         <nome>Globo</nome>
         <tipoDoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoDoCanal>
         <linkOuCanal>01</linkOuCanal>
-        <id>1656981884174</id>
-        <contador>2</contador>
+        <id>1657849198215</id>
+        <contador>3</contador>
       </canal>
-      <horario>20:00</horario>
-      <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
+      <horario>07:00</horario>
+      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
       <statusDeExebicao>EXIBICAO</statusDeExebicao>
-      <nomeDosApresentadoroes>Xuxa</nomeDosApresentadoroes>
-    </entity.ProgramaContinuo>
-    <entity.ProgramaContinuo>
-      <nome>Mais você</nome>
-      <id>1656982009684</id>
-      <canal reference="../../entity.ProgramaContinuo/canal"/>
-      <horario>00:00</horario>
-      <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
-      <statusDeExebicao>FINALIZADO</statusDeExebicao>
-      <nomeDosApresentadoroes>fatima</nomeDosApresentadoroes>
-    </entity.ProgramaContinuo>
+      <diasDaSemana>
+        <string>segunda-feira</string>
+      </diasDaSemana>
+      <genero>animação</genero>
+      <estilo>LIVI_ACTION</estilo>
+      <temparada>1</temparada>
+    </entity.ProgramaSeriesRegulares>
+    <entity.ProgramaSeriesRegulares>
+      <nome>Jornal Manhã</nome>
+      <id>1657849311151</id>
+      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
+      <horario>08:00</horario>
+      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
+      <statusDeExebicao>HIATO</statusDeExebicao>
+      <dataHiato>2022-07-14 03:00:00.0 UTC</dataHiato>
+      <diasDaSemana>
+        <string>segunda-feira</string>
+      </diasDaSemana>
+      <genero>noticias</genero>
+      <estilo>ANIMADA</estilo>
+      <temparada>4</temparada>
+    </entity.ProgramaSeriesRegulares>
+    <entity.ProgramaDeRealityShows>
+      <nome>BBB</nome>
+      <id>1657849387702</id>
+      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
+      <horario>23:00</horario>
+      <tipoDePrograma>REALITY_SHOWS</tipoDePrograma>
+      <statusDeExebicao>HIATO</statusDeExebicao>
+      <dataHiato>2022-07-14 03:00:00.0 UTC</dataHiato>
+      <diasDaSemana>
+        <string>segunda-feira</string>
+      </diasDaSemana>
+      <nomeDosApresentadores>Gaby</nomeDosApresentadores>
+      <temporada>22</temporada>
+    </entity.ProgramaDeRealityShows>
   </todosOsProgramas>
   <todosOsCanais>
-    <entity.Canal reference="../../todosOsProgramas/entity.ProgramaContinuo/canal"/>
+    <entity.Canal reference="../../todosOsProgramas/entity.ProgramaSeriesRegulares/canal"/>
   </todosOsCanais>
   <todosOsUsuarios>
     <entity.Usuario>
       <nome>daniel</nome>
       <email>danielsilvacr123@gmail.com</email>
       <senha>12345Aa</senha>
-      <id>1656980006333</id>
+      <id>1657849186056</id>
     </entity.Usuario>
   </todosOsUsuarios>
   <todasAsAgendas/>

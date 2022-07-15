@@ -1,6 +1,5 @@
 package entity;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
 import enuns.StatusDeExebicao;
@@ -12,7 +11,7 @@ public class ProgramaDeRealityShows extends Programa {
 	private String temporada;
 
 	public ProgramaDeRealityShows(String nome, String apresentador, StatusDeExebicao exebicao, Canal canal,
-			DayOfWeek[] dias, String horario, Date data, String temporada) {
+			String[] dias, String horario, Date data, String temporada) {
 
 		this.setTipoDePrograma(TipoDePrograma.REALITY_SHOWS);
 		this.setNome(nome);

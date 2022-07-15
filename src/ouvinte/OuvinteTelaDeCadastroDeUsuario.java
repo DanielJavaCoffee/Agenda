@@ -32,8 +32,8 @@ public class OuvinteTelaDeCadastroDeUsuario implements ActionListener {
 		// salvarUsuario
 		String nome = telaDeCadastroDeUsuario.getCampoNome().getText();
 		String email = telaDeCadastroDeUsuario.getCampoEmail().getText();
-		String senha01 = telaDeCadastroDeUsuario.getCampoSenha01().getText();
-		String senha02 = telaDeCadastroDeUsuario.getCampoSenha02().getText();
+		String senha01 = new String(telaDeCadastroDeUsuario.getCampoSenha01().getPassword());
+		String senha02 = new String(telaDeCadastroDeUsuario.getCampoSenha02().getPassword());
 		try {
 			if (nome.isBlank() || email.isBlank() || senha01.isBlank() || senha02.isBlank()) {
 

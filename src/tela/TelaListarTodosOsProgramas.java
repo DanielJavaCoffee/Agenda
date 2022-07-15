@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.DayOfWeek;
 import java.util.Collections;
 import java.util.List;
 
@@ -22,6 +23,7 @@ import entity.ProgramaSeriesRegulares;
 import janelas.JanelaListarProgramas;
 import model.CentralDeInformacoes;
 import model.Persistencia;
+import model.Util;
 import ouvinte.OuvinteTelaListarTodosOsProgramas;
 
 public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
@@ -59,7 +61,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
 		JLabel jLabel = new JLabel("TELA DE LISTAR PROGRAMA, EXCLUIR, DETALHAR, ADICIONAR NA AGENDA E ATUALIZAR", icon, JLabel.CENTER);
 		jLabel.setBounds(0, 0, 1200, 70);
-		jLabel.setFont(new Font("Impact",Font.ITALIC, 30));
+		jLabel.setFont(Util.fontTitulo);
 		jLabel.setOpaque(true);
 		jLabel.setBackground(new Color(46,139,87));
 		jLabel.setForeground(Color.WHITE);
@@ -73,7 +75,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		buttonVoltar.addActionListener(voltar());
 		buttonVoltar.setBackground(new Color(46,139,87));
 		buttonVoltar.setForeground(Color.WHITE);
-		buttonVoltar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
 	}
 
@@ -92,7 +94,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		buttonAtualizar.addActionListener(atualizar());
 		buttonAtualizar.setBackground(new Color(46,139,87));
 		buttonAtualizar.setForeground(Color.WHITE);
-		buttonAtualizar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonAtualizar.setFont(Util.font);
 		add(buttonAtualizar);
 	}
 
@@ -111,7 +113,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		buttonExcluir.addActionListener(excluir());
 		buttonExcluir.setBackground(new Color(46,139,87));
 		buttonExcluir.setForeground(Color.WHITE);
-		buttonExcluir.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonExcluir.setFont(Util.font);
 		add(buttonExcluir);
 	}
 
@@ -126,11 +128,11 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 	private void adicionarJButtonDetalhar() {
 
 		buttonDetalhar = new JButton("Detalhar");
-		buttonDetalhar.setBounds(700, 600, 100, 30);
+		buttonDetalhar.setBounds(700, 600, 130, 30);
 		buttonDetalhar.addActionListener(detalhar());
 		buttonDetalhar.setBackground(new Color(46,139,87));
 		buttonDetalhar.setForeground(Color.WHITE);
-		buttonDetalhar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonDetalhar.setFont(Util.font);
 		add(buttonDetalhar);
 	}
 
@@ -150,7 +152,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		buttonAdicionarNaAgenda.addActionListener(adicionar());
 		buttonAdicionarNaAgenda.setBackground(new Color(46,139,87));
 		buttonAdicionarNaAgenda.setForeground(Color.WHITE);
-		buttonAdicionarNaAgenda.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonAdicionarNaAgenda.setFont(Util.font);
 		add(buttonAdicionarNaAgenda);
 	}
 	
@@ -169,16 +171,13 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		buttonFiltrar.addActionListener(filtrar());
 		buttonFiltrar.setBackground(new Color(46,139,87));
 		buttonFiltrar.setForeground(Color.WHITE);
-		buttonFiltrar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonFiltrar.setFont(Util.font);
 		add(buttonFiltrar);
 		
 	}
 	
 	public ActionListener filtrar() {
-		
 		return new ActionListener() {
-			
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				ouvinte.actionPerformedFiltrar(e);
 			}
@@ -219,6 +218,9 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 				linha[2] = pc.getNomeDosApresentadores();
 				linha[3] = pc.getStatusDeExebicao();
 				linha[4] = pc.getCanal();
+				for(String d: pc.getDiasDaSemana()) {
+					System.out.println(d);
+				}
 				linha[5] = pc.getDiasDaSemana();
 				linha[6] = pc.getHorario();
 				linha[7] = pc.getDataHiato();
@@ -254,7 +256,7 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 				linha[1] = pr.getNome();
 				linha[3] = pr.getStatusDeExebicao();
 				linha[4] = pr.getCanal();
-				linha[5] = pr.getDiasDaSemana();
+				linha[5] = pr.getDiasDaSemana().toString();
 				linha[6] = pr.getHorario();
 				linha[7] = pr.getDataHiato();
 				linha[8] = pr.getTemporada();

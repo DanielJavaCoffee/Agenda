@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
 import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaDeCadastroDeUsuario;
 
 
@@ -29,8 +30,7 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 	
 
 	public TelaDeCadastroDeUsuario(String titulo) {
-		super(titulo);
-		titulo();
+		super(titulo, "CADASTRAMENTO DO USUÁRIO");
 		adicionarJLabel();
 		adicionarJTextFiled();
 		buttonSalvar();
@@ -39,22 +39,10 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		
 	}
 	
-	private void titulo() {
-		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
-		JLabel jLabel = new JLabel("CADASTRAMENTO DO USUÁRIO", icon, JLabel.CENTER);
-		jLabel.setBounds(0, 0, 700, 70);
-		jLabel.setFont(new Font("Impact",Font.ITALIC, 30));
-		jLabel.setOpaque(true);
-		jLabel.setBackground(new Color(46,139,87));
-		jLabel.setForeground(Color.WHITE);
-		add(jLabel);
-	}
-	
-	
 	private void adicionarJLabel() {
 		JLabel nome = new JLabel("Nome:", JLabel.CENTER);
 		nome.setBounds(30, 90, 95, 30);
-		nome.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		nome.setFont(Util.font);
 		nome.setOpaque(true);
 		nome.setBackground(new Color(46,139,87));
 		nome.setForeground(Color.WHITE);
@@ -62,7 +50,7 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		
 		JLabel email = new JLabel("Email:", JLabel.CENTER);
 		email.setBounds(30, 160, 95, 30);
-		email.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		email.setFont(Util.font);
 		email.setOpaque(true);
 		email.setBackground(new Color(46,139,87));
 		email.setForeground(Color.WHITE);
@@ -70,7 +58,7 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		
 		JLabel senha01 = new JLabel("Senha:", JLabel.CENTER);
 		senha01.setBounds(30, 230, 95, 30);
-		senha01.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		senha01.setFont(Util.font);
 		senha01.setOpaque(true);
 		senha01.setBackground(new Color(46,139,87));
 		senha01.setForeground(Color.WHITE);
@@ -78,7 +66,7 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		
 		JLabel senha02 = new JLabel("Senha: ", JLabel.CENTER);
 		senha02.setBounds(30, 300, 95, 30);
-		senha02.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		senha02.setFont(Util.font);
 		senha02.setOpaque(true);
 		senha02.setBackground(new Color(46,139,87));
 		senha02.setForeground(Color.WHITE);
@@ -109,7 +97,7 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 		buttonSalvar.setBounds(520, 400, 130, 30);
 		buttonSalvar.setBackground(new Color(46,139,87));
 		buttonSalvar.setForeground(Color.WHITE);
-		buttonSalvar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonSalvar.setFont(Util.font);
 		buttonSalvar.addActionListener(salvar());
 		add(buttonSalvar);
 	}
@@ -125,12 +113,12 @@ public class TelaDeCadastroDeUsuario extends JanelaPadrao {
 	}
 	
 	public void adicionarImagem() {
-		
+
 		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
-		
+
 		JLabel imagem = new JLabel();
 		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
-		imagem.setBounds(0, 20, 700, 500);
+		imagem.setBounds(0, 30, 700, 500);
 		add(imagem);
 	}
 	

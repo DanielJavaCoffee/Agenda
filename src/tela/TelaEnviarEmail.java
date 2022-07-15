@@ -1,4 +1,5 @@
 package tela;
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,117 +12,145 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
+import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaDeEnviarEmail;
 
-public class TelaEnviarEmail extends JanelaPadrao{
+public class TelaEnviarEmail extends JanelaPadrao {
 
-    OuvinteTelaDeEnviarEmail ouvinte = new OuvinteTelaDeEnviarEmail(this);
+	OuvinteTelaDeEnviarEmail ouvinte = new OuvinteTelaDeEnviarEmail(this);
 
-    private JTextArea areaMensagem;
-    private JTextField assunto;
-    private JTextField email;
-    private JButton enviar;
-    private JButton voltar;
+	private JTextArea areaMensagem;
+	private JTextField assunto;
+	private JTextField email;
+	private JButton enviar;
+	private JButton voltar;
 
-    public TelaEnviarEmail(String titulo) {
-        super(titulo);
-        adicionarTitulo();
-        adicionarJLabel();
-        adicionarCampo();
-        adicionarBotaoEnviar();
-        adicionarBotaoVoltar();
-        setVisible(true);
-    }
-    private void adicionarTitulo(){
-        JLabel enviarEmail = new JLabel("ENVIAR EMAIL", JLabel.CENTER);
-        enviarEmail.setBounds(0, 0, 700, 40);
-        enviarEmail.setOpaque(true);
-        enviarEmail.setBackground(Color.GRAY);
-        add(enviarEmail);
-    }
-    private void adicionarJLabel(){
+	public TelaEnviarEmail(String titulo) {
+		super(titulo, "ENVIAR EMAIL");
+		adicionarJLabel();
+		adicionarCampo();
+		adicionarBotaoEnviar();
+		adicionarBotaoVoltar();
+		adicionarImagem();
+		setVisible(true);
+	}
 
-        JLabel assunto = new JLabel("Assunto:");
-        assunto.setBounds(20, 70, 100, 30);
-        add(assunto);
+	private void adicionarJLabel() {
 
-        JLabel emailCliente = new JLabel("Emial:");
-        emailCliente.setBounds(20, 150, 100, 30);
-        add(emailCliente);
+		JLabel assunto = new JLabel("Assunto:");
+		assunto.setBounds(20, 90, 130, 30);
+		assunto.setFont(Util.font);
+		assunto.setOpaque(true);
+		assunto.setBackground(new Color(46, 139, 87));
+		assunto.setForeground(Color.WHITE);
+		add(assunto);
 
-        JLabel mensagem = new JLabel("Mensagem: ");
-        mensagem.setBounds(20, 230, 100, 30);
-        add(mensagem);
-    }
+		JLabel emailCliente = new JLabel("Emial:");
+		emailCliente.setBounds(20, 150, 130, 30);
+		emailCliente.setFont(Util.font);
+		emailCliente.setOpaque(true);
+		emailCliente.setBackground(new Color(46, 139, 87));
+		emailCliente.setForeground(Color.WHITE);
+		add(emailCliente);
 
-    private void adicionarCampo(){
+		JLabel mensagem = new JLabel("Mensagem:");
+		mensagem.setBounds(20, 230, 130, 30);
+		mensagem.setFont(Util.font);
+		mensagem.setOpaque(true);
+		mensagem.setBackground(new Color(46, 139, 87));
+		mensagem.setForeground(Color.WHITE);
+		add(mensagem);
+	}
 
-        assunto = new JTextField();
-        assunto.setBounds(150, 70, 250, 30);
-        add(assunto);
+	private void adicionarCampo() {
 
-        email = new JTextField();
-        email.setBounds(150, 150, 250, 30);
-        add(email);
+		assunto = new JTextField();
+		assunto.setBounds(160, 90, 250, 30);
+		add(assunto);
 
-        areaMensagem = new JTextArea();
-        JScrollPane painel = new JScrollPane(areaMensagem);
-        painel.setBounds(150, 230, 250, 90);
-        areaMensagem.setLineWrap(true);
-        areaMensagem.setWrapStyleWord(true);
-        add(painel);
-    }
+		email = new JTextField();
+		email.setBounds(160, 150, 250, 30);
+		add(email);
 
-    private void adicionarBotaoEnviar(){
+		areaMensagem = new JTextArea();
+		JScrollPane painel = new JScrollPane(areaMensagem);
+		painel.setBounds(160, 230, 250, 90);
+		areaMensagem.setLineWrap(true);
+		areaMensagem.setWrapStyleWord(true);
+		add(painel);
+	}
 
-        enviar = new JButton("Enviar Email");
-        enviar.setIcon(new ImageIcon("icones/icons8-gmail-20.png"));
-        enviar.setBounds(480, 400, 130, 30);  // esquerda para direita, B, C, comprimento, altura;
-        enviar.addActionListener(enviar());
-        add(enviar);
-    }
+	private void adicionarBotaoEnviar() {
 
-    public ActionListener enviar(){
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ouvinte.actionPerformedEnviar(e, "Enviar Email");
-            }
-        };
-    }
+		enviar = new JButton("Enviar Email");
+		enviar.setIcon(new ImageIcon("icones/icons8-gmail-20.png"));
+		enviar.setBounds(490, 400, 160, 30); // esquerda para direita, B, C, comprimento, altura;
+		enviar.addActionListener(enviar());
+		enviar.setFont(Util.font);
+		enviar.setBackground(new Color(46, 139, 87));
+		enviar.setForeground(Color.WHITE);
+		add(enviar);
+	}
 
-    private void adicionarBotaoVoltar(){
+	public ActionListener enviar() {
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ouvinte.actionPerformedEnviar(e, "Enviar Email");
+			}
+		};
+	}
 
-        voltar = new JButton("Voltar");
-        voltar.setIcon(new ImageIcon("icones/icons8-rotate-left-20.png"));
-        voltar.setBounds(20, 400, 130, 30);  // esquerda para direita, B, C, comprimento, altura
-        voltar.addActionListener(voltar());
-        add(voltar);
-    }
+	private void adicionarBotaoVoltar() {
 
-    public ActionListener voltar(){
+		voltar = new JButton("Voltar");
+		voltar.setIcon(new ImageIcon("icones/icons8-rotate-left-20.png"));
+		voltar.setBounds(20, 400, 160, 30); // esquerda para direita, B, C, comprimento, altura
+		voltar.addActionListener(voltar());
+		voltar.setFont(Util.font);
+		voltar.setBackground(new Color(46, 139, 87));
+		voltar.setForeground(Color.WHITE);
+		add(voltar);
+	}
 
-        return new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ouvinte.actionPerformedVoltar(e, "Voltar");
-            }
-        };
-    }
+	public ActionListener voltar() {
 
-    public JTextField getEmail(){
-        return email;
-    }
-    public JTextField getAssunto(){
-        return assunto;
-    }
-    public JTextArea getAreaMensagem(){
-        return areaMensagem;
-    }
-    public JButton getVoltar() {
-        return voltar;
-    }
-    public JButton getEnviar() {
-        return enviar;
-    }
+		return new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ouvinte.actionPerformedVoltar(e, "Voltar");
+			}
+		};
+	}
+	
+	public void adicionarImagem() {
+
+		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
+
+		JLabel imagem = new JLabel();
+		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
+		imagem.setBounds(0, 30, 700, 500);
+		add(imagem);
+	}
+
+	public JTextField getEmail() {
+		return email;
+	}
+
+	public JTextField getAssunto() {
+		return assunto;
+	}
+
+	public JTextArea getAreaMensagem() {
+		return areaMensagem;
+	}
+
+	public JButton getVoltar() {
+		return voltar;
+	}
+
+	public JButton getEnviar() {
+		return enviar;
+	}
 }

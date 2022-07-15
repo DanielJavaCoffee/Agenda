@@ -41,28 +41,34 @@ public class OuvinteTelaDeMenu implements ActionListener {
 		String comando = clique.getActionCommand();
 		if (comando.equals("Cadastrar Canal")) {
 			
+			telaDeMenu.dispose();
 			new TelaDeCadastroDeCanal(null);
-			telaDeMenu.setVisible(false);
-			
+
 		} else if (comando.equals("Listar Canal")) {
 			
+			telaDeMenu.dispose();
 			new TelaListarTodosOsCanal(null);
-			telaDeMenu.setVisible(false);
-			
+	
 		} else if (comando.equals("Cadastrar Programas")) {
 
 			String[] opercao = { "Programa Séries Regulares", "Programa De RealityShows", "Programa Continuo" };
 			String entrada = (String) JOptionPane.showInputDialog(null, "Qual Tipo De Programa Você Deseja Cadastrar: ",
 					"", JOptionPane.WARNING_MESSAGE, null, opercao, opercao[0]);
 			if (opercao[0] == entrada) {
+				
+				telaDeMenu.dispose();
 				new TelaCadastroDeProgramaSeriesRegulares(null);
-				telaDeMenu.setVisible(false);
+				
 			} else if (opercao[1] == entrada) {
+				
+				telaDeMenu.dispose();
                 new TelaCadastroDeProgramaDeRealityShows(null);
-				telaDeMenu.setVisible(false);
+			
 			} else {
+				
+				telaDeMenu.dispose();
 				new TelaCadastroDeProgramaContinuo(null);
-				telaDeMenu.setVisible(false);
+				
 			}
 					
 		} else if (comando.equals("Listar Programas")) {
@@ -72,18 +78,22 @@ public class OuvinteTelaDeMenu implements ActionListener {
 			
 		} else if (comando.equals("Gerar PDF")) {
 			
+			telaDeMenu.dispose();
 			new TelaGerarPDF(null);
-			telaDeMenu.setVisible(false);
 			
 		} else if(comando.equals("Minha Agenda")) {
 			
+			telaDeMenu.dispose();
 			new TelaAgendaDePrograma(null);
-			telaDeMenu.setVisible(false);
+			
 
 		} else if(comando.equals("Enviar Minha Agenda Por Email")) {
 			
+			telaDeMenu.dispose();
 			new TelaEnviarEmail(null);
-			telaDeMenu.setVisible(false);
+			
+		} else if(comando.equals("Sair")) {
+			System.exit(0);	
 		}
 	}
 

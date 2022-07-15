@@ -1,6 +1,5 @@
 package entity;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
 import enuns.StatusDeExebicao;
@@ -15,7 +14,7 @@ public abstract class Programa implements Comparable<Programa>{
 	private TipoDePrograma tipoDePrograma;
 	private StatusDeExebicao statusDeExebicao;
 	private Date dataHiato;
-	private DayOfWeek diasDaSemana[];
+	private String[] diasDaSemana;
 
 	public abstract String toString();
 	
@@ -75,12 +74,11 @@ public abstract class Programa implements Comparable<Programa>{
 		this.tipoDePrograma = tipoDePrograma;
 	}
 
-	public DayOfWeek[] getDiasDaSemana() {
+	public String[] getDiasDaSemana() {
 		return diasDaSemana;
 	}
 
-	public void setDiasDaSemana(DayOfWeek[] diasDaSemana) {
+	public void setDiasDaSemana(String[] diasDaSemana) {
 		this.diasDaSemana = diasDaSemana;
 	}
-	
 }

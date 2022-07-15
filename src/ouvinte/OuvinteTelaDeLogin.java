@@ -32,7 +32,7 @@ public class OuvinteTelaDeLogin implements ActionListener {
 	public void actionPerformed(ActionEvent proseguir) {
 
 		String email = telaDeLogin.getCampoEmail().getText();
-		String senha = telaDeLogin.getCampoSenha().getText();
+		String senha = new String(telaDeLogin.getCampoSenha().getPassword());
 
 		try {
 
@@ -68,7 +68,8 @@ public class OuvinteTelaDeLogin implements ActionListener {
 		} else {
 			
 			Mensageiro.enviarProgramacaoDeHoje("Seus Dados Do APP", nomeEmail, centralDeInformacoes.getTodosOsUsuarios().toString());
-			MensagemEmail.emailEnviadoUsuario();	
+			MensagemEmail.emailEnviadoUsuario();
+			
 		} // end else
 	} // end actionPerformedSenha
 } // end class

@@ -1,18 +1,22 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
+import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
 import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaDeLogin;
 
 public class TelaDeLogin extends JanelaPadrao {
@@ -25,7 +29,7 @@ public class TelaDeLogin extends JanelaPadrao {
 	private JButton buttonEsqueciSenha;
 
 	public TelaDeLogin(String titulo) {
-		super(titulo);
+		super(titulo, "TELA DE LOGUIN");
 		adicionarTitulo();
 		adicionarJLabel();
 		adicionarJTextFiled();
@@ -39,28 +43,46 @@ public class TelaDeLogin extends JanelaPadrao {
 		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
 		JLabel jLabel = new JLabel("TELA DE LOGUIN", icon, JLabel.CENTER);
 		jLabel.setBounds(0, 0, 700, 70);
-		jLabel.setFont(new Font("Impact", Font.ITALIC, 30));
+		jLabel.setFont(Util.fontTitulo);
 		jLabel.setOpaque(true);
 		jLabel.setBackground(new Color(46, 139, 87));
 		jLabel.setForeground(Color.WHITE);
+		jLabel.addMouseListener(new MouseListener() {
+			
+		public void mouseReleased(MouseEvent e) {
+
+		}
+
+		public void mousePressed(MouseEvent e) {
+
+		}
+
+		public void mouseExited(MouseEvent e) {
+				jLabel.setBackground(new Color(46, 139, 87));
+				jLabel.repaint();
+				Cursor c = new Cursor(Cursor.DEFAULT_CURSOR);
+				setCursor(c);
+		}
+
+		public void mouseEntered(MouseEvent e) {
+				jLabel.setBackground(Color.RED);
+				jLabel.repaint();
+				Cursor c = new Cursor(Cursor.HAND_CURSOR);
+				setCursor(c);
+		}
+
+		public void mouseClicked(MouseEvent e) {
+				JOptionPane.showMessageDialog(null, "Isso não é um site");
+			}
+		});
 		add(jLabel);
-	}
-
-	public void adicionarImagem() {
-		
-		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
-
-		JLabel imagem = new JLabel();
-		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
-		imagem.setBounds(0, 60, 700, 500);
-		add(imagem);
 	}
 
 	private void adicionarJLabel() {
 
 		JLabel email = new JLabel("Email:", JLabel.CENTER);
 		email.setBounds(30, 130, 95, 30);
-		email.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		email.setFont(Util.font);
 		email.setOpaque(true);
 		email.setBackground(new Color(46, 139, 87));
 		email.setForeground(Color.WHITE);
@@ -68,7 +90,7 @@ public class TelaDeLogin extends JanelaPadrao {
 
 		JLabel senha01 = new JLabel("Senha:", JLabel.CENTER);
 		senha01.setBounds(30, 230, 95, 30);
-		senha01.setFont(new Font("Arial Black", Font.ITALIC, 17));
+		senha01.setFont(Util.font);
 		senha01.setOpaque(true);
 		senha01.setBackground(new Color(46, 139, 87));
 		senha01.setForeground(Color.WHITE);
@@ -86,15 +108,14 @@ public class TelaDeLogin extends JanelaPadrao {
 		add(campoSenha);
 	}
 
-	public void adicionarButtonProseguir() {
+	private void adicionarButtonProseguir() {
 
 		buttonProseguir = new JButton("Prosseguir");
-		buttonProseguir.setBounds(520, 400, 130, 30);
+		buttonProseguir.setBounds(500, 400, 160, 30);
 		buttonProseguir.addActionListener(proseguir());
-		buttonProseguir.setFont(new Font("Arial Black", Font.ITALIC, 14));
+		buttonProseguir.setFont(Util.font);
 		buttonProseguir.setBackground(new Color(46, 139, 87));
 		buttonProseguir.setForeground(Color.WHITE);
-
 		add(buttonProseguir);
 
 	}
@@ -111,10 +132,10 @@ public class TelaDeLogin extends JanelaPadrao {
 	public void adicionarButtonEsqueciSenha() {
 
 		buttonEsqueciSenha = new JButton("Esqueci Senha");
-		buttonEsqueciSenha.setBounds(30, 400, 130, 30);
+		buttonEsqueciSenha.setBounds(30, 400, 160, 30);
 		buttonEsqueciSenha.setBackground(new Color(46, 139, 87));
 		buttonEsqueciSenha.setForeground(Color.WHITE);
-		buttonEsqueciSenha.setFont(new Font("Arial Black", Font.ITALIC, 13));
+		buttonEsqueciSenha.setFont(Util.font);
 		buttonEsqueciSenha.addActionListener(senha());
 		add(buttonEsqueciSenha);
 
@@ -124,9 +145,18 @@ public class TelaDeLogin extends JanelaPadrao {
 		return new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ouvinte.actionPerformedSenha(e);
-
 			}
 		};
+	}
+	
+	public void adicionarImagem() {
+
+		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
+
+		JLabel imagem = new JLabel();
+		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
+		imagem.setBounds(0, 30, 700, 500);
+		add(imagem);
 	}
 
 	public JTextField getCampoEmail() {

@@ -1,6 +1,5 @@
 package entity;
 
-import java.time.DayOfWeek;
 import java.util.Date;
 
 import enuns.StatusDeExebicao;
@@ -15,7 +14,7 @@ public class ProgramaContinuo extends Programa{
 	}
 	
 	public ProgramaContinuo(String nome, String nomeApresentador, StatusDeExebicao status, Canal canal, 
-			DayOfWeek[] dias, String horario, Date data) {
+			String[] dias, String horario, Date data) {
 		
 		this.setTipoDePrograma(TipoDePrograma.PROGRAMAS_CONTINUOS);
 		this.setNome(nome);

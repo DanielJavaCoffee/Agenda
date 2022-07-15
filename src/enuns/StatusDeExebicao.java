@@ -1,8 +1,13 @@
 package enuns;
 
 public enum StatusDeExebicao {
-	EXIBICAO, 
-	HIATO,
-	FINALIZADO,
-	CANCELADO;	
+	EXIBICAO("Exibição"), 
+	HIATO("Hiato"),
+	FINALIZADO("Finalizado"),
+	CANCELADO("Cancelado");	
+	
+	public String status;
+	StatusDeExebicao(String status) {
+		this.status = status;
+	}
 }

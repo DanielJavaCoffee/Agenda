@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
+@SuppressWarnings("serial")
 public class JanelaListarProgramas extends JFrame {
 	
 	public JanelaListarProgramas(String titulo) {

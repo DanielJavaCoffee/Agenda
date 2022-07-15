@@ -1,7 +1,6 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 
 import janelas.JanelaPadrao;
+import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaGerarPDF;
 
 public class TelaGerarPDF extends JanelaPadrao {
@@ -20,24 +21,11 @@ public class TelaGerarPDF extends JanelaPadrao {
 	private JButton buttonVoltar;
 
 	public TelaGerarPDF(String titulo) {
-		super(titulo);
-		adicionarTitulo();
+		super(titulo, "TELA DE PDF");
 		adicionarJButtonPDF();
 		adicionarJButtonVoltar();
+		adicionarImagem();
 		setVisible(true);
-	}
-
-	private void adicionarTitulo() {
-
-		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
-		JLabel jLabel = new JLabel("TELA DE PDF", icon, JLabel.CENTER);
-		jLabel.setBounds(0, 0, 700, 70);
-		jLabel.setFont(new Font("Impact", Font.ITALIC, 30));
-		jLabel.setOpaque(true);
-		jLabel.setBackground(new Color(46, 139, 87));
-		jLabel.setForeground(Color.WHITE);
-		add(jLabel);
-
 	}
 
 	private void adicionarJButtonPDF() {
@@ -45,10 +33,10 @@ public class TelaGerarPDF extends JanelaPadrao {
 		buttonGerarPDF = new JButton("Gerar PDF De Todos Os Programas");
 		buttonGerarPDF.setBounds(200, 200, 350, 30);
 		buttonGerarPDF.addActionListener(gerarPDF());
-		buttonGerarPDF.addActionListener(voltar());
+		buttonGerarPDF.addActionListener(gerarPDF());
 		buttonGerarPDF.setBackground(new Color(46, 139, 87));
 		buttonGerarPDF.setForeground(Color.WHITE);
-		buttonGerarPDF.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonGerarPDF.setFont(Util.font);
 		add(buttonGerarPDF);
 	}
 
@@ -66,10 +54,9 @@ public class TelaGerarPDF extends JanelaPadrao {
 		buttonVoltar = new JButton("Voltar");
 		buttonVoltar.setBounds(30, 400, 100, 30);
 		buttonVoltar.addActionListener(voltar());
-		buttonVoltar.addActionListener(voltar());
 		buttonVoltar.setBackground(new Color(46, 139, 87));
 		buttonVoltar.setForeground(Color.WHITE);
-		buttonVoltar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
 
 	}
@@ -81,6 +68,16 @@ public class TelaGerarPDF extends JanelaPadrao {
 				ouvinte.actionPerformed(e);
 			}
 		};
+	}
+	
+	public void adicionarImagem() {
+
+		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
+
+		JLabel imagem = new JLabel();
+		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
+		imagem.setBounds(0, 30, 700, 500);
+		add(imagem);
 	}
 
 	public JButton getButtonGerarPDF() {

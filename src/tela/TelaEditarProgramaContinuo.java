@@ -22,6 +22,7 @@ import entity.ProgramaContinuo;
 import janelas.JanelaTelaCadastroDePrograma;
 import model.CentralDeInformacoes;
 import model.Persistencia;
+import model.Util;
 import ouvinte.OuvinteTelaEditarProgramaContinuo;
 
 public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
@@ -58,7 +59,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
 		JLabel jLabel = new JLabel("CADASTRO DE PROGRAMA", icon, JLabel.CENTER);
 		jLabel.setBounds(0, 0, 900, 70);
-		jLabel.setFont(new Font("Impact",Font.ITALIC, 30));
+		jLabel.setFont(Util.fontTitulo);
 		jLabel.setOpaque(true);
 		jLabel.setBackground(new Color(46,139,87));
 		jLabel.setForeground(Color.WHITE);
@@ -100,7 +101,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 
 		JLabel nome = new JLabel("Nome Do Programa: ");
 		nome.setBounds(40, 300, 240, 30);
-		nome.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		nome.setFont(Util.font);
 	    nome.setOpaque(true);
 		nome.setBackground(new Color(46,139,87));
 		nome.setForeground(Color.WHITE);
@@ -108,7 +109,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 
 		JLabel id = new JLabel("ID Do Canal: ");
 		id.setBounds(40, 350, 240, 30);
-		id.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		id.setFont(Util.font);
 	    id.setOpaque(true);
 		id.setBackground(new Color(46,139,87));
 		id.setForeground(Color.WHITE);
@@ -116,7 +117,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 
 		JLabel data = new JLabel("Dia/s Do Programa: ");
 		data.setBounds(40, 400, 240, 30);
-		data.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		data.setFont(Util.font);
 	    data.setOpaque(true);
 		data.setBackground(new Color(46,139,87));
 		data.setForeground(Color.WHITE);
@@ -124,7 +125,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 
 		JLabel horario = new JLabel("Horario Do Programa: ");
 		horario.setBounds(40, 450, 240, 30);
-		horario.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		horario.setFont(Util.font);
 	    horario.setOpaque(true);
 		horario.setBackground(new Color(46,139,87));
 		horario.setForeground(Color.WHITE);
@@ -132,7 +133,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		
 		JLabel apresentador = new JLabel("Nome Do Apresentador:");
 		apresentador.setBounds(40, 500, 240, 30);
-		apresentador.setFont(new Font("Arial Black",Font.ITALIC, 17));
+		apresentador.setFont(Util.font);
 	    apresentador.setOpaque(true);
 		apresentador.setBackground(new Color(46,139,87));
 		apresentador.setForeground(Color.WHITE);
@@ -182,7 +183,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		buttonVoltar.addActionListener(voltar());
 		buttonVoltar.setBackground(new Color(46,139,87));
 		buttonVoltar.setForeground(Color.WHITE);
-		buttonVoltar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
 
 	}
@@ -202,7 +203,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		buttonSalvar.addActionListener(salvar());
 		buttonSalvar.setBackground(new Color(46,139,87));
 		buttonSalvar.setForeground(Color.WHITE);
-		buttonSalvar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonSalvar.setFont(Util.font);
 		add(buttonSalvar);
 	}
 

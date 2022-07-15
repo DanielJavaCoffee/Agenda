@@ -2,6 +2,7 @@ package janelas;
 
 import javax.swing.JFrame;
 
+@SuppressWarnings("serial")
 public class JanelaTelaCadastroDePrograma extends JFrame {
 
 	public JanelaTelaCadastroDePrograma(String titulo) {

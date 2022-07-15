@@ -1,7 +1,6 @@
 package tela;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
@@ -20,6 +19,7 @@ import janelas.JanelaPadrao;
 import model.CentralDeInformacoes;
 import model.Persistencia;
 import model.SorteioDeTelaImagens;
+import model.Util;
 import ouvinte.OuvinteTelaDeListarCanal;
 
 public class TelaListarTodosOsCanal extends JanelaPadrao {
@@ -35,8 +35,7 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 	private JTextField campoBusca;
 
 	public TelaListarTodosOsCanal(String titulo) {
-		super(titulo);
-		adicionarJLabel();
+		super(titulo, "TELA DE LISTAR CANAL");
 		adicionarJButtonVoltar();
 		adicionarJButtonAtualizar();
 		adicionarJButtonExcluir();
@@ -46,18 +45,6 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 		setVisible(true);
 	}
 
-	private void adicionarJLabel() {
-
-		ImageIcon icon = new ImageIcon("src/Imagens/cats-removebg-preview.png");
-		JLabel jLabel = new JLabel("TELA DE LISTAR CANAL", icon, JLabel.CENTER);
-		jLabel.setBounds(0, 0, 700, 70);
-		jLabel.setFont(new Font("Impact", Font.ITALIC, 30));
-		jLabel.setOpaque(true);
-		jLabel.setBackground(new Color(46, 139, 87));
-		jLabel.setForeground(Color.WHITE);
-		add(jLabel);
-	}
-
 	private void adicionarJButtonVoltar() {
 
 		buttonVoltar = new JButton("Voltar");
@@ -65,7 +52,7 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 		buttonVoltar.addActionListener(voltar());
 		buttonVoltar.setBackground(new Color(46, 139, 87));
 		buttonVoltar.setForeground(Color.WHITE);
-		buttonVoltar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
 	}
 
@@ -80,11 +67,11 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 	private void adicionarJButtonAtualizar() {
 
 		buttonAtualizar = new JButton("Atualizar");
-		buttonAtualizar.setBounds(450, 400, 100, 30);
+		buttonAtualizar.setBounds(420, 400, 130, 30);
 		buttonAtualizar.addActionListener(atualizar());
 		buttonAtualizar.setBackground(new Color(46, 139, 87));
 		buttonAtualizar.setForeground(Color.WHITE);
-		buttonAtualizar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonAtualizar.setFont(Util.font);
 		add(buttonAtualizar);
 	}
 
@@ -103,7 +90,7 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 		buttonExcluir.addActionListener(excluir());
 		buttonExcluir.setBackground(new Color(46, 139, 87));
 		buttonExcluir.setForeground(Color.WHITE);
-		buttonExcluir.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonExcluir.setFont(Util.font);
 		add(buttonExcluir);
 	}
 
@@ -118,11 +105,11 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 	private void adicionarJButtonDetalhar() {
 
 		buttonDetalhar = new JButton("Detalhar");
-		buttonDetalhar.setBounds(320, 400, 100, 30);
+		buttonDetalhar.setBounds(280, 400, 120, 30);
 		buttonDetalhar.addActionListener(detalhar());
 		buttonDetalhar.setBackground(new Color(46, 139, 87));
 		buttonDetalhar.setForeground(Color.WHITE);
-		buttonDetalhar.setFont(new Font("Arial Black", Font.ITALIC, 15));
+		buttonDetalhar.setFont(Util.font);
 		add(buttonDetalhar);
 	}
 
@@ -169,13 +156,13 @@ public class TelaListarTodosOsCanal extends JanelaPadrao {
 	}
 	
 	public void adicionarImagem() {
-		
+
 		SorteioDeTelaImagens sorteioDeTelaImagens = new SorteioDeTelaImagens();
-		
+
 		JLabel imagem = new JLabel();
-        imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
-        imagem.setBounds(0, 30, 700, 450);
-        add(imagem);
+		imagem.setIcon(new ImageIcon(sorteioDeTelaImagens.sorteioDeTela()));
+		imagem.setBounds(0, 30, 700, 500);
+		add(imagem);
 	}
 
 	public JButton getButtonVoltar() {

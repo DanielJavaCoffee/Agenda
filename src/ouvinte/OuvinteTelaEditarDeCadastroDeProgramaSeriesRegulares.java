@@ -3,19 +3,15 @@ package ouvinte;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
-import java.util.Date;
-
-import javax.swing.JOptionPane;
 
 import entity.Canal;
 import entity.ProgramaSeriesRegulares;
 import enuns.EstiloSeriesRegulares;
 import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
+import model.DiasDaSemana;
 import model.Persistencia;
+import model.StatusHiato;
 import personalizedMessage.MensagemCanal;
 import personalizedMessage.MensagemException;
 import personalizedMessage.MensagemPrograma;
@@ -46,18 +42,14 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 
 		try {
 
-			SimpleDateFormat formatar = new SimpleDateFormat("dd/MM/yyyy");
-			Date data = null;
 			String nome = telaCadastroDePrograma.getCampoNomeDoPrograma().getText();
 			long id = Long.parseLong(telaCadastroDePrograma.getCampoIDCanal().getText());
 			String horario = telaCadastroDePrograma.getCampoHorario().getText();
 			String genero = telaCadastroDePrograma.getCampoGenero().getText();
 			String temporada = telaCadastroDePrograma.getCampoTemporada().getText();
-			String dia = telaCadastroDePrograma.getCampoDiasDaSemana().getText();
+			String diasDaSemana[] = telaCadastroDePrograma.getCampoDiasDaSemana().getText().split(", ");
 			long idPrograma = Long.parseLong(telaCadastroDePrograma.getCampoID().getText());
-			dia.toUpperCase();
-			DayOfWeek dayOfWeek = DayOfWeek.valueOf(dia);
-
+			
 			if (nome.isBlank() || horario.isBlank() || genero.isBlank() || temporada.isBlank()) {
 				MensagemUsuario.usuarioCampoVazio();
 			} else {
@@ -66,34 +58,11 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 
 				if (canal != null) {
 
-					String[] opercao = { "Live Action", "Animada" };
-					String entrada = (String) JOptionPane.showInputDialog(null, "Estilo Dá Séries: ", "",
-							JOptionPane.WARNING_MESSAGE, null, opercao, opercao[0]);
-					EstiloSeriesRegulares estilo = null;
-
-					if (opercao[0] == entrada) {
-						estilo = EstiloSeriesRegulares.LIVI_ACTION;
-					} else {
-						estilo = EstiloSeriesRegulares.ANIMADA;
-					} // end else
-
-					String[] status = { "Exibição", "Hiato", "Finalizado", "Cancelado" };
-					String entradaStatus = (String) JOptionPane.showInputDialog(null, "Estilo Dá Séries: ", "",
-							JOptionPane.WARNING_MESSAGE, null, status, status[0]);
-
-					StatusDeExebicao exebicao = null;
-
-					if (status[0] == entradaStatus) {
-						exebicao = StatusDeExebicao.EXIBICAO;
-					} else if (status[1] == entradaStatus) {
-						exebicao = StatusDeExebicao.HIATO;
-						data = formatar.parse(JOptionPane.showInputDialog("Data de exebição: Separe por barras /. "));
-					} else if (status[2] == entradaStatus) {
-						exebicao = StatusDeExebicao.FINALIZADO;
-					} else {
-						exebicao = StatusDeExebicao.CANCELADO;
-					}
-
+					StatusHiato status = new StatusHiato();
+					StatusDeExebicao statusFinal = status.statusDeExebicao();
+					EstiloSeriesRegulares estilo = status.estiloSeriesRegulares();
+					String dias[] = DiasDaSemana.dias(diasDaSemana);
+					
 					ProgramaSeriesRegulares programa = (ProgramaSeriesRegulares) centralDeInformacoes
 							.recuperarProgramaDeTVporId(idPrograma);
 
@@ -101,11 +70,11 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 						ProgramaSeriesRegulares ps = (ProgramaSeriesRegulares) programa;
 
 						ps.setNome(nome);
-						ps.setStatusDeExebicao(exebicao);
+						ps.setStatusDeExebicao(statusFinal);
 						ps.setCanal(canal);
-					//	ps.setDiasDaSemana(dayOfWeek);
+						ps.setDiasDaSemana(dias);
 						ps.setHorario(horario);
-						ps.setDataHiato(data);
+						ps.setDataHiato(status.getData());
 						ps.setTemparada(temporada);
 						ps.setGenero(genero);
 						ps.setEstilo(estilo);
@@ -124,9 +93,6 @@ public class OuvinteTelaEditarDeCadastroDeProgramaSeriesRegulares implements Act
 		} catch (NumberFormatException number) {
 			MensagemException.numberFormatException(number);
 		} catch (HeadlessException e1) {
-			e1.printStackTrace();
-		} catch (ParseException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} // end catch
 	} // end action
