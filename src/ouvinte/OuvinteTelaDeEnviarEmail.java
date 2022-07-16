@@ -1,49 +1,62 @@
 package ouvinte;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.mail.SendFailedException;
+
+import entity.Usuario;
 import model.CentralDeInformacoes;
 import model.Mensageiro;
 import model.Persistencia;
 import personalizedMessage.MensagemEmail;
+import personalizedMessage.MensagemUsuario;
 import tela.TelaDeMenu;
 import tela.TelaEnviarEmail;
 
 public class OuvinteTelaDeEnviarEmail implements ActionListener {
 
-    private TelaEnviarEmail telaEnviarEmail;
+	private TelaEnviarEmail telaEnviarEmail;
 
-    Persistencia persistencia = new Persistencia();
-    CentralDeInformacoes central = persistencia.recuperarCentral();
+	Persistencia persistencia = new Persistencia();
+	CentralDeInformacoes central = persistencia.recuperarCentral();
 
-    public OuvinteTelaDeEnviarEmail(TelaEnviarEmail tela){
-        this.telaEnviarEmail = tela;
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
+	public OuvinteTelaDeEnviarEmail(TelaEnviarEmail tela) {
+		this.telaEnviarEmail = tela;
+	}
 
-    }
+	@Override
+	public void actionPerformed(ActionEvent e) {
 
-    public void actionPerformedEnviar(ActionEvent e, String enviar_email) {
+	}
 
-    	try {
-    		
-            String emailCleinte = telaEnviarEmail.getEmail().getText();
-            String assunto = telaEnviarEmail.getAssunto().getText();
-            String mensagem = telaEnviarEmail.getAreaMensagem().getText();
-            
-            Mensageiro.enviarProgramacaoDeHoje(assunto, emailCleinte, mensagem + central.getTodasAsAgendas().toString());
-            MensagemEmail.emailEnviadoUsuario();
+	public void actionPerformedEnviar(ActionEvent e) {
 
-    	} catch (Exception erro) {
-		    MensagemEmail.emailErro();
+		try {
+
+			Usuario usuario = central.recuperarUsuario(central.getTodosOsUsuarios().get(0).getEmail());
+
+			String email = telaEnviarEmail.getEmail().getText();
+			String assunto = telaEnviarEmail.getAssunto().getText();
+			String mensagem = telaEnviarEmail.getAreaMensagem().getText();
+
+			if (!email.isBlank() || !assunto.isBlank() || !mensagem.isBlank()) {
+
+				Mensageiro.enviarProgramacaoDeHoje(assunto, email, mensagem + central.getTodasAsAgendas().toString());
+
+			}  else {
+				MensagemUsuario.usuarioCampoVazio();
+			}
+			
+		} catch (Exception erro) {
+			MensagemEmail.emailErro();
 		}
-    }
+	}
 
-    public void actionPerformedVoltar(ActionEvent e, String voltar) {
-    	
-            new TelaDeMenu(null);
-            telaEnviarEmail.setVisible(false);
-     
-    }
+	public void actionPerformedVoltar(ActionEvent e) {
+
+		new TelaDeMenu(null);
+		telaEnviarEmail.setVisible(false);
+
+	}
 }

@@ -106,8 +106,9 @@ public class OuvinteTelaDeMenu implements ActionListener {
 
 			if (usuario != null) {
 				centralDeInformacoes.excluirUsuario(usuario);
-				persistencia.salvarCentral(centralDeInformacoes);
+				centralDeInformacoes.excluirAgendaSemUsuario();
 				MensagemUsuario.usuarioExcluir();
+				persistencia.salvarCentral(centralDeInformacoes);
 				System.exit(0);
 			} else {
 				MensagemUsuario.usuarioNaoEncontrado();

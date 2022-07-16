@@ -1,11 +1,15 @@
 package entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Usuario {
 
 	private String nome;
 	private String email;
 	private String senha;
 	private long id;
+	private List<Programa> minhaAgenda = new ArrayList<>();
 
 	public Usuario(String nome, String email, String senha) {
 		this.nome = nome;
@@ -15,7 +19,8 @@ public class Usuario {
 	}
 
 	public String toString() {
-		return "Nome: " + this.nome + " Email: " + this.email + " Senha: " + this.senha + " ID: " + this.id;
+		return "Nome: " + this.nome + " Email: " + this.email + " Senha: " + this.senha + " ID: " + this.id +
+				"Minha Agenda: " + this.minhaAgenda;
 	}
 
 	public String getNome() {
@@ -40,6 +45,18 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public List<Programa> getMinhaAgenda() {
+		return minhaAgenda;
+	}
+
+	public void setMinhaAgenda(List<Programa> minhaAgenda) {
+		this.minhaAgenda = minhaAgenda;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public long getId() {

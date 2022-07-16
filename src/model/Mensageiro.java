@@ -6,6 +6,7 @@ import javax.mail.Address;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
+import javax.mail.SendFailedException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -15,7 +16,7 @@ import personalizedMessage.MensagemEmail;
 
 public class Mensageiro {
 
-    public static void enviarProgramacaoDeHoje(String assunto, String email, String texto)  {
+    public static void enviarProgramacaoDeHoje(String assunto, String email, String texto) throws SendFailedException {
 
         Properties props = new Properties();
 
@@ -52,6 +53,7 @@ public class Mensageiro {
             message.setSubject(assunto);
             message.setText(texto);
             Transport.send(message);
+            MensagemEmail.emailEnviadoUsuario();
            
         } catch (MessagingException e) {
         	MensagemEmail.emailErro();

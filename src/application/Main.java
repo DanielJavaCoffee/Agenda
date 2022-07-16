@@ -4,6 +4,7 @@ import java.time.DayOfWeek;
 import java.time.format.TextStyle;
 import java.util.Locale;
 
+import entity.Programa;
 import model.CentralDeInformacoes;
 import model.Persistencia;
 import tela.TelaDeCadastroDeUsuario;
@@ -15,6 +16,10 @@ public class Main {
 
 		Persistencia persistencia = new Persistencia();
 		CentralDeInformacoes centralDeInformacoes = persistencia.recuperarCentral();
+		
+		for(Programa p : centralDeInformacoes.getTodasAsAgendas()) {
+			System.out.println(p);
+		}
 
 		// Initializing a DayOfWeek instance
 		DayOfWeek dayOfWeek = DayOfWeek.MONDAY;

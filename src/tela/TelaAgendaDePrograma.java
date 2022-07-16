@@ -15,6 +15,7 @@ import entity.Programa;
 import entity.ProgramaContinuo;
 import entity.ProgramaDeRealityShows;
 import entity.ProgramaSeriesRegulares;
+import entity.Usuario;
 import janelas.JanelaListarProgramas;
 import model.CentralDeInformacoes;
 import model.Persistencia;
@@ -109,9 +110,9 @@ public class TelaAgendaDePrograma extends JanelaListarProgramas {
 		modelo.addColumn("Estilo");
 		modelo.addColumn("ID");
 		
-		List<Programa> programa = centralDeInformacoes.getTodasAsAgendas();
-
-		Collections.sort(programa);
+		Usuario usuario = centralDeInformacoes.recuperarUsuario(centralDeInformacoes.getTodosOsUsuarios().get(0).getNome());
+		
+		List<Programa> programa = usuario.getMinhaAgenda();
 
 		Object[] linhas = new Object[programa.size()];
 

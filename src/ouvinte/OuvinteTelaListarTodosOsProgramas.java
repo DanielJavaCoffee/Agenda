@@ -9,6 +9,7 @@ import entity.Programa;
 import entity.ProgramaContinuo;
 import entity.ProgramaDeRealityShows;
 import entity.ProgramaSeriesRegulares;
+import entity.Usuario;
 import enuns.TipoDePrograma;
 import model.CentralDeInformacoes;
 import model.Persistencia;
@@ -113,6 +114,8 @@ public class OuvinteTelaListarTodosOsProgramas implements ActionListener {
 			long id = Long.parseLong(JOptionPane.showInputDialog("Informe o ID do Programa"));
 
 			Programa programaDeTV = centralDeInformacoes.recuperarProgramaDeTVporId(id);
+			
+			Usuario usuario = centralDeInformacoes.recuperarUsuario(centralDeInformacoes.getTodosOsUsuarios().get(0).getNome());
 
 			if (programaDeTV != null) {
 				
@@ -123,6 +126,8 @@ public class OuvinteTelaListarTodosOsProgramas implements ActionListener {
 				} // end for
 
 				if (centralDeInformacoes.AdicionarAgenda(programaDeTV)) {
+					
+					usuario.setMinhaAgenda(centralDeInformacoes.getTodasAsAgendas());
  
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemAgenda.adicionarNaMinhaAgenda();

@@ -55,21 +55,24 @@ public class OuvinteTelaDeLogin implements ActionListener {
 
 		String nomeEmail = JOptionPane.showInputDialog(telaDeLogin, "Informe o nome do usuário ou um email: ");
 		Usuario usuario = centralDeInformacoes.recuperarUsuario(nomeEmail);
+		try {
+			if (!nomeEmail.contains("@")) {
 
-		if (!nomeEmail.contains("@")) {
+				if (usuario != null) {
+					Mensageiro.enviarProgramacaoDeHoje("Seus Dados Do APP", usuario.getEmail(), usuario.toString());
+					MensagemEmail.emailEnviadoUsuario();
+				} else {
+					MensagemUsuario.usuarioNaoEncontrado();
+				} // end else
 
-			if (usuario != null) {
-				Mensageiro.enviarProgramacaoDeHoje("Seus Dados Do APP", usuario.getEmail(), usuario.toString());
-				MensagemEmail.emailEnviadoUsuario();
 			} else {
-				MensagemUsuario.usuarioNaoEncontrado();
-			} // end else
 
-		} else {
-			
-			Mensageiro.enviarProgramacaoDeHoje("Seus Dados Do APP", nomeEmail, centralDeInformacoes.getTodosOsUsuarios().toString());
-			MensagemEmail.emailEnviadoUsuario();
-			
-		} // end else
+				Mensageiro.enviarProgramacaoDeHoje("Seus Dados Do APP", nomeEmail,
+						centralDeInformacoes.getTodosOsUsuarios().toString());
+
+			} // end else
+		} catch (Exception e) {
+			MensagemEmail.emailErro();
+		}
 	} // end actionPerformedSenha
 } // end class

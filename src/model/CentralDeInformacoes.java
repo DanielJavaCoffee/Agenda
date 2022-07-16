@@ -139,6 +139,14 @@ public class CentralDeInformacoes {
 		return null;
 	}
 
+	public void excluirAgendaSemUsuario() {
+		for (int i = 0; i < todasAsAgendas.size(); i++) {
+			if (todasAsAgendas.get(i) != null) {
+				todasAsAgendas.remove(i);
+			}
+		}
+	}
+
 	public List<Canal> getTodosOsCanais() {
 		return todosOsCanais;
 	}

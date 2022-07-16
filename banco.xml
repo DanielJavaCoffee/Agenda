@@ -1,94 +1,38 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <model.CentralDeInformacoes>
   <todosOsProgramas>
-    <entity.ProgramaSeriesRegulares>
+    <entity.ProgramaContinuo>
       <nome>Xuxa</nome>
-      <id>1657849239112</id>
+      <id>1657933013747</id>
       <canal>
-        <nome>SBT</nome>
+        <nome>Globo</nome>
         <tipoDoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoDoCanal>
         <linkOuCanal>01</linkOuCanal>
-        <id>1657849198215</id>
-        <contador>5</contador>
+        <id>1657932987952</id>
+        <contador>0</contador>
       </canal>
-      <horario>07:00</horario>
-      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
+      <horario>12:00</horario>
+      <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
       <statusDeExebicao>EXIBICAO</statusDeExebicao>
       <diasDaSemana>
         <string>segunda-feira</string>
       </diasDaSemana>
-      <genero>animação</genero>
-      <estilo>LIVI_ACTION</estilo>
-      <temparada>1</temparada>
-    </entity.ProgramaSeriesRegulares>
-    <entity.ProgramaSeriesRegulares>
-      <nome>Jornal Manhã</nome>
-      <id>1657849311151</id>
-      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
-      <horario>08:00</horario>
-      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
-      <statusDeExebicao>HIATO</statusDeExebicao>
-      <dataHiato>2022-07-14 03:00:00.0 UTC</dataHiato>
-      <diasDaSemana>
-        <string>segunda-feira</string>
-      </diasDaSemana>
-      <genero>noticias</genero>
-      <estilo>ANIMADA</estilo>
-      <temparada>4</temparada>
-    </entity.ProgramaSeriesRegulares>
-    <entity.ProgramaDeRealityShows>
-      <nome>BBB</nome>
-      <id>1657849387702</id>
-      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
-      <horario>23:00</horario>
-      <tipoDePrograma>REALITY_SHOWS</tipoDePrograma>
-      <statusDeExebicao>HIATO</statusDeExebicao>
-      <dataHiato>2022-07-14 03:00:00.0 UTC</dataHiato>
-      <diasDaSemana>
-        <string>segunda-feira</string>
-      </diasDaSemana>
-      <nomeDosApresentadores>Gaby</nomeDosApresentadores>
-      <temporada>22</temporada>
-    </entity.ProgramaDeRealityShows>
-    <entity.ProgramaDeRealityShows>
-      <nome>Jogo</nome>
-      <id>1657914552706</id>
-      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
-      <horario>09:00</horario>
-      <tipoDePrograma>REALITY_SHOWS</tipoDePrograma>
-      <statusDeExebicao>HIATO</statusDeExebicao>
-      <dataHiato>2023-07-12 03:00:00.0 UTC</dataHiato>
-      <diasDaSemana>
-        <string>quinta-feira</string>
-      </diasDaSemana>
-      <nomeDosApresentadores>Bay</nomeDosApresentadores>
-      <temporada>1</temporada>
-    </entity.ProgramaDeRealityShows>
-    <entity.ProgramaSeriesRegulares>
-      <nome>kay</nome>
-      <id>1657914640905</id>
-      <canal reference="../../entity.ProgramaSeriesRegulares/canal"/>
-      <horario>07:00</horario>
-      <tipoDePrograma>SERIES_REGULARES</tipoDePrograma>
-      <statusDeExebicao>EXIBICAO</statusDeExebicao>
-      <diasDaSemana>
-        <string>sábado</string>
-      </diasDaSemana>
-      <genero>kay</genero>
-      <estilo>ANIMADA</estilo>
-      <temparada>2</temparada>
-    </entity.ProgramaSeriesRegulares>
+      <nomeDosApresentadoroes>xuxa</nomeDosApresentadoroes>
+    </entity.ProgramaContinuo>
   </todosOsProgramas>
   <todosOsCanais>
-    <entity.Canal reference="../../todosOsProgramas/entity.ProgramaSeriesRegulares/canal"/>
+    <entity.Canal reference="../../todosOsProgramas/entity.ProgramaContinuo/canal"/>
   </todosOsCanais>
   <todosOsUsuarios>
     <entity.Usuario>
       <nome>daniel</nome>
       <email>danielsilvacr123@gmail.com</email>
       <senha>12345Aa</senha>
-      <id>1657916710567</id>
+      <id>1657933112459</id>
+      <minhaAgenda>
+        <entity.ProgramaContinuo reference="../../../../todosOsProgramas/entity.ProgramaContinuo"/>
+      </minhaAgenda>
     </entity.Usuario>
   </todosOsUsuarios>
-  <todasAsAgendas/>
+  <todasAsAgendas reference="../todosOsUsuarios/entity.Usuario/minhaAgenda"/>
 </model.CentralDeInformacoes>

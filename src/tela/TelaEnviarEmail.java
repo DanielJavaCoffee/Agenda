@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import janelas.JanelaPadrao;
+import model.AdicionarJLabel;
 import model.SorteioDeTelaImagens;
 import model.Util;
 import ouvinte.OuvinteTelaDeEnviarEmail;
@@ -37,30 +38,15 @@ public class TelaEnviarEmail extends JanelaPadrao {
 	}
 
 	private void adicionarJLabel() {
-
-		JLabel assunto = new JLabel("Assunto:");
-		assunto.setBounds(20, 90, 130, 30);
-		assunto.setFont(Util.font);
-		assunto.setOpaque(true);
-		assunto.setBackground(new Color(46, 139, 87));
-		assunto.setForeground(Color.WHITE);
-		add(assunto);
-
-		JLabel emailCliente = new JLabel("Emial:");
-		emailCliente.setBounds(20, 150, 130, 30);
-		emailCliente.setFont(Util.font);
-		emailCliente.setOpaque(true);
-		emailCliente.setBackground(new Color(46, 139, 87));
-		emailCliente.setForeground(Color.WHITE);
-		add(emailCliente);
-
-		JLabel mensagem = new JLabel("Mensagem:");
-		mensagem.setBounds(20, 230, 130, 30);
-		mensagem.setFont(Util.font);
-		mensagem.setOpaque(true);
-		mensagem.setBackground(new Color(46, 139, 87));
-		mensagem.setForeground(Color.WHITE);
-		add(mensagem);
+		
+		AdicionarJLabel assunto = new AdicionarJLabel();
+		add(assunto.adicionarJLabel("Assunto", 20, 90, 130, 30));
+		
+		AdicionarJLabel email = new AdicionarJLabel();
+		add(email.adicionarJLabel("Email", 20, 150, 130, 30));
+		
+		AdicionarJLabel mensagem = new AdicionarJLabel();
+		add(mensagem.adicionarJLabel("Mensagem", 20, 230, 130, 30));
 	}
 
 	private void adicionarCampo() {
@@ -85,7 +71,7 @@ public class TelaEnviarEmail extends JanelaPadrao {
 
 		enviar = new JButton("Enviar Email");
 		enviar.setIcon(new ImageIcon("icones/icons8-gmail-20.png"));
-		enviar.setBounds(490, 400, 160, 30); // esquerda para direita, B, C, comprimento, altura;
+		enviar.setBounds(490, 400, 160, 30);
 		enviar.addActionListener(enviar());
 		enviar.setFont(Util.font);
 		enviar.setBackground(new Color(46, 139, 87));
@@ -95,9 +81,8 @@ public class TelaEnviarEmail extends JanelaPadrao {
 
 	public ActionListener enviar() {
 		return new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				ouvinte.actionPerformedEnviar(e, "Enviar Email");
+				ouvinte.actionPerformedEnviar(e);
 			}
 		};
 	}
@@ -106,7 +91,7 @@ public class TelaEnviarEmail extends JanelaPadrao {
 
 		voltar = new JButton("Voltar");
 		voltar.setIcon(new ImageIcon("icones/icons8-rotate-left-20.png"));
-		voltar.setBounds(20, 400, 160, 30); // esquerda para direita, B, C, comprimento, altura
+		voltar.setBounds(20, 400, 160, 30);
 		voltar.addActionListener(voltar());
 		voltar.setFont(Util.font);
 		voltar.setBackground(new Color(46, 139, 87));
@@ -119,7 +104,7 @@ public class TelaEnviarEmail extends JanelaPadrao {
 		return new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				ouvinte.actionPerformedVoltar(e, "Voltar");
+				ouvinte.actionPerformedVoltar(e);
 			}
 		};
 	}

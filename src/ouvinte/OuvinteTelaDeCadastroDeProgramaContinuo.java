@@ -7,6 +7,7 @@ import java.text.ParseException;
 
 import entity.Canal;
 import entity.ProgramaContinuo;
+import entity.Usuario;
 import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
 import model.DiasDaSemana;
@@ -65,6 +66,7 @@ public class OuvinteTelaDeCadastroDeProgramaContinuo implements ActionListener {
 					ProgramaContinuo programa = new ProgramaContinuo(nome, apresentador, statusFinal, canal, dias, horario, status.getData());
 
 					centralDeInformacoes.adicionarProgramaDeTV(programa);
+					
 					persistencia.salvarCentral(centralDeInformacoes);
 					MensagemPrograma.programaSalvo();
 					telaCadastroDePrograma.dispose();
