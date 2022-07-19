@@ -18,6 +18,7 @@ public class AdicionarJLabel extends JLabel {
 	    nome.setOpaque(true);
 		nome.setBackground(new Color(46,139,87));
 		nome.setForeground(Color.WHITE);
+		
 		nome.addMouseListener(new MouseListener() {
 			
 			@Override

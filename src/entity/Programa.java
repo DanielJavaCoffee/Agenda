@@ -5,7 +5,7 @@ import java.util.Date;
 import enuns.StatusDeExebicao;
 import enuns.TipoDePrograma;
 
-public abstract class Programa implements Comparable<Programa>{
+public abstract class Programa {
 
 	private String nome;
 	private long id;

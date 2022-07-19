@@ -60,8 +60,4 @@ public class ProgramaSeriesRegulares extends Programa {
 	public void setTemparada(String temparada) {
 		this.temparada = temparada;
 	}
-
-	public int compareTo(Programa o) {
-		return 0;
-	}
 }

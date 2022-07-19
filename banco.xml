@@ -9,13 +9,14 @@
         <tipoDoCanal>CANAL_ABERTO_DE_TELEVISAO</tipoDoCanal>
         <linkOuCanal>01</linkOuCanal>
         <id>1657932987952</id>
-        <contador>0</contador>
+        <contador>1</contador>
       </canal>
       <horario>12:00</horario>
       <tipoDePrograma>PROGRAMAS_CONTINUOS</tipoDePrograma>
-      <statusDeExebicao>EXIBICAO</statusDeExebicao>
+      <statusDeExebicao>FINALIZADO</statusDeExebicao>
+      <dataHiato>2022-07-17 03:00:00.0 UTC</dataHiato>
       <diasDaSemana>
-        <string>segunda-feira</string>
+        <null/>
       </diasDaSemana>
       <nomeDosApresentadoroes>xuxa</nomeDosApresentadoroes>
     </entity.ProgramaContinuo>

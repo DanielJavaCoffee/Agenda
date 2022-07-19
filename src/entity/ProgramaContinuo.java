@@ -41,10 +41,4 @@ public class ProgramaContinuo extends Programa{
 	public void setNomeDoApresentador(String nomeDosApresentadores) {
 		this.nomeDosApresentadoroes = nomeDosApresentadores;
 	}
-
-	@Override
-	public int compareTo(Programa o) {
-
-		return 0;
-	}
 }

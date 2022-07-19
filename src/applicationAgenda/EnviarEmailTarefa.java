@@ -8,7 +8,6 @@ import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
 import model.Mensageiro;
 import model.Persistencia;
-import personalizedMessage.MensagemEmail;
 import personalizedMessage.MensagemException;
 
 public class EnviarEmailTarefa extends TimerTask {
@@ -26,7 +25,6 @@ public class EnviarEmailTarefa extends TimerTask {
 		StatusDeExebicao status = StatusDeExebicao.EXIBICAO;
 
 		try {
-
 			for (int i = 0; i < centralDeInformacoes.getTodasAsAgendas().size(); i++) {
 
 				if (status.equals(centralDeInformacoes.getTodasAsAgendas().get(i).getStatusDeExebicao().EXIBICAO)
@@ -34,10 +32,7 @@ public class EnviarEmailTarefa extends TimerTask {
 
 					Mensageiro.enviarProgramacaoDeHoje("Vai começar",
 							centralDeInformacoes.getTodosOsUsuarios().get(0).getEmail(),
-							"Prepare sua Pipoca" + "\n" + centralDeInformacoes.getTodasAsAgendas().get(i).toString());
-
-					MensagemEmail.emailEnviadoUsuario();
-
+							"Prepare sua Pipoca" + "\n" + centralDeInformacoes.getTodasAsAgendas().get(i).toString());	
 				} // end if
 			} // end for
 		} catch (Exception e) {

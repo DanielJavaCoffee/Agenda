@@ -49,9 +49,4 @@ public class ProgramaDeRealityShows extends Programa {
 	public void setTemporada(String temporada) {
 		this.temporada = temporada;
 	}
-
-	@Override
-	public int compareTo(Programa o) {
-		return 0;
-	}
 }

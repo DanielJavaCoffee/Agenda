@@ -10,7 +10,7 @@ public class SorteioDeTelaImagens {
 					"src/Imagens/xx.png" };
 
 			int numero = new Random().nextInt(3);
-			String opApp = imagens[numero];
-			return opApp;
+			String sorteio = imagens[numero];
+			return sorteio;
 	}
 }

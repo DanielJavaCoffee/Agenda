@@ -3,9 +3,6 @@ package ouvinte;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.mail.SendFailedException;
-
-import entity.Usuario;
 import model.CentralDeInformacoes;
 import model.Mensageiro;
 import model.Persistencia;
@@ -33,8 +30,6 @@ public class OuvinteTelaDeEnviarEmail implements ActionListener {
 	public void actionPerformedEnviar(ActionEvent e) {
 
 		try {
-
-			Usuario usuario = central.recuperarUsuario(central.getTodosOsUsuarios().get(0).getEmail());
 
 			String email = telaEnviarEmail.getEmail().getText();
 			String assunto = telaEnviarEmail.getAssunto().getText();

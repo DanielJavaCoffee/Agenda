@@ -3,7 +3,6 @@ package tela;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
 import java.util.List;
 
 import javax.swing.ImageIcon;
@@ -187,8 +186,6 @@ public class TelaListarTodosOsProgramas extends JanelaListarProgramas {
 		modelo.addColumn("ID");
 		
 		List<Programa> programa = centralDeInformacoes.getTodosOsProgramas();
-
-		Collections.sort(programa);
 
 		Object[] linhas = new Object[programa.size()];
 

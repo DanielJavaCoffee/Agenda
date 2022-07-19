@@ -52,6 +52,7 @@ public class DiasDaSemana {
 				dias[i] = full_name;
 				break;
 			}
+			
 		}
 		for(String dia: dias)
 			System.out.println(dia);
