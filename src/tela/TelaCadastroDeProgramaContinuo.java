@@ -9,7 +9,6 @@ import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
-import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -40,7 +39,6 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 
 	public TelaCadastroDeProgramaContinuo(String titulo) {
 		super(titulo);
-		listarPrograma();
 		adicionarJLabel();
 		adicionarJTextFild();
 		adicionarButtonVoltar();
@@ -48,50 +46,8 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		setVisible(true);
 	}
 
-	private void listarPrograma() {
-
-		DefaultTableModel modelo = new DefaultTableModel();
-
-		modelo.addColumn("ID");
-		modelo.addColumn("Nome");
-		modelo.addColumn("Tipo De Canal");
-		modelo.addColumn("Link Ou Número Do Canal");
-
-		List<Canal> canais = centralDeInformacoes.getTodosOsCanais();
-
-		Collections.sort(canais);
-
-		Object[] linhas = new Object[canais.size()];
-		for (Canal canal : canais) {
-			Object[] linha = new Object[4];
-			linha[0] = canal.getId();
-			linha[1] = canal.getNome();
-			linha[2] = canal.getTipoDoCanal();
-			linha[3] = canal.getLinkOuCanal();
-			modelo.addRow(linha);
-		}
-
-		JTable tabela = new JTable(modelo);
-		tabela.setBackground(Color.green);
-		JScrollPane painelTabela = new JScrollPane(tabela);
-		painelTabela.setBounds(40, 100, 800, 190);
-		add(painelTabela);
-	}
-
 	private void adicionarJLabel() {
-		
-		AdicionarJLabel nome = new AdicionarJLabel();
-		add(nome.adicionarJLabel("Nome Do Programa:", 40, 300, 240, 30));
-		
-		AdicionarJLabel idDoCanal = new AdicionarJLabel();
-		add(idDoCanal.adicionarJLabel("ID Do Canal:", 40, 350, 240, 30));
-		
-		AdicionarJLabel diasDaSemana = new AdicionarJLabel();
-		add(diasDaSemana.adicionarJLabel("Dia/s Do Programa:", 40, 400, 240, 30));
-		
-		AdicionarJLabel horarioDoPrograma = new AdicionarJLabel();
-		add(horarioDoPrograma.adicionarJLabel("Horario Do Programa:", 40, 450, 240, 30));
-		
+
 		AdicionarJLabel nomeDoApresentador = new AdicionarJLabel();
 		add(nomeDoApresentador.adicionarJLabel("Nome Do Apresentador:", 40, 500, 240, 30));
 	}
@@ -109,7 +65,7 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		campoDiasDaSemana = new JTextField();
 		campoDiasDaSemana.setBounds(300, 400, 200, 30);
 		add(campoDiasDaSemana);
-		
+
 		try {
 			campoHorario = new JFormattedTextField(new MaskFormatter("##:##"));
 
@@ -118,11 +74,11 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		}
 		campoHorario.setBounds(300, 450, 70, 30);
 		add(campoHorario);
-		
+
 		campoApresentador = new JTextField();
 		campoApresentador.setBounds(300, 500, 200, 30);
 		add(campoApresentador);
-		
+
 	}
 
 	private void adicionarButtonVoltar() {
@@ -130,7 +86,7 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		buttonVoltar = new JButton("Voltar");
 		buttonVoltar.setBounds(40, 600, 100, 30);
 		buttonVoltar.addActionListener(voltar());
-		buttonVoltar.setBackground(new Color(46,139,87));
+		buttonVoltar.setBackground(new Color(46, 139, 87));
 		buttonVoltar.setForeground(Color.WHITE);
 		buttonVoltar.setFont(Util.font);
 		add(buttonVoltar);
@@ -150,12 +106,11 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		buttonSalvar = new JButton("Salvar");
 		buttonSalvar.setBounds(720, 600, 100, 30);
 		buttonSalvar.addActionListener(salvar());
-		buttonSalvar.setBackground(new Color(46,139,87));
+		buttonSalvar.setBackground(new Color(46, 139, 87));
 		buttonSalvar.setForeground(Color.WHITE);
 		buttonSalvar.setFont(Util.font);
 		add(buttonSalvar);
 	}
-	
 
 	public ActionListener salvar() {
 		return new ActionListener() {
@@ -177,7 +132,6 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 		return campoIDCanal;
 	}
 
-
 	public JTextField getCampoDiasDaSemana() {
 		return campoDiasDaSemana;
 	}
@@ -197,4 +151,5 @@ public class TelaCadastroDeProgramaContinuo extends JanelaTelaCadastroDePrograma
 	public JTextField getCampoApresentador() {
 		return campoApresentador;
 	}
+
 }

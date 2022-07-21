@@ -7,7 +7,6 @@ import java.text.ParseException;
 
 import entity.Canal;
 import entity.ProgramaContinuo;
-import entity.Usuario;
 import enuns.StatusDeExebicao;
 import model.CentralDeInformacoes;
 import model.DiasDaSemana;

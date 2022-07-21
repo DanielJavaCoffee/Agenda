@@ -3,20 +3,14 @@ package tela;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
-import entity.Canal;
 import entity.ProgramaContinuo;
 import janelas.JanelaTelaCadastroDePrograma;
 import model.AdicionarJLabel;
@@ -46,7 +40,6 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		super(titulo);
 		this.programaContinuo = programaContinuo;
 		adicionarTitulo();
-		listarPrograma();
 		adicionarJLabel();
 		adicionarJTextFild();
 		adicionarButtonVoltar();
@@ -66,50 +59,7 @@ public class TelaEditarProgramaContinuo extends JanelaTelaCadastroDePrograma {
 		add(jLabel);
 	}
 
-	private void listarPrograma() {
-
-		DefaultTableModel modelo = new DefaultTableModel();
-
-		modelo.addColumn("ID");
-		modelo.addColumn("Nome");
-		modelo.addColumn("Tipo De Canal");
-		modelo.addColumn("Link Ou Número Do Canal");
-
-		List<Canal> canais = centralDeInformacoes.getTodosOsCanais();
-
-		Collections.sort(canais);
-
-		Object[] linhas = new Object[canais.size()];
-		for (Canal canal : canais) {
-			Object[] linha = new Object[4];
-			linha[0] = canal.getId();
-			linha[1] = canal.getNome();
-			linha[2] = canal.getTipoDoCanal();
-			linha[3] = canal.getLinkOuCanal();
-			modelo.addRow(linha);
-		}
-
-		JTable tabela = new JTable(modelo);
-		tabela.setBackground(Color.green);
-		JScrollPane painelTabela = new JScrollPane(tabela);
-		painelTabela.setBounds(40, 100, 800, 190);
-		add(painelTabela);
-
-	}
-
 	private void adicionarJLabel() {
-
-		AdicionarJLabel nome = new AdicionarJLabel();
-		add(nome.adicionarJLabel("Nome Do Programa:", 40, 300, 240, 30));
-		
-		AdicionarJLabel idDoCanal = new AdicionarJLabel();
-		add(idDoCanal.adicionarJLabel("ID Do Canal:", 40, 350, 240, 30));
-		
-		AdicionarJLabel diasDaSemana = new AdicionarJLabel();
-		add(diasDaSemana.adicionarJLabel("Dia/s Do Programa:", 40, 400, 240, 30));
-		
-		AdicionarJLabel horarioDoPrograma = new AdicionarJLabel();
-		add(horarioDoPrograma.adicionarJLabel("Horario Do Programa:", 40, 450, 240, 30));
 		
 		AdicionarJLabel nomeDoApresentador = new AdicionarJLabel();
 		add(nomeDoApresentador.adicionarJLabel("Nome Do Apresentador:", 40, 500, 240, 30));

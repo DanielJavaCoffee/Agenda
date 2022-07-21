@@ -4,20 +4,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Collections;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.text.MaskFormatter;
 
-import entity.Canal;
 import entity.ProgramaSeriesRegulares;
 import janelas.JanelaTelaCadastroDePrograma;
 import model.AdicionarJLabel;
@@ -32,7 +26,8 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 	CentralDeInformacoes centralDeInformacoes = persistencia.recuperarCentral();
 	OuvinteTelaEditarCadastroDeProgramaSeriesRegulares ouvinte = new OuvinteTelaEditarCadastroDeProgramaSeriesRegulares(this);
 
-	private JTextField campoNomeDoPrograma;
+	private JanelaTelaCadastroDePrograma janela;
+    private JTextField campoNomeDoPrograma;
 	private JTextField campoIDCanal;
 	private JTextField campoDiasDaSemana;
 	private JTextField campoGenero;
@@ -47,7 +42,6 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 		super(titulo);
 		this.programaSeriesRegulares = programaSeriesRegulares;
 		adicionarTitulo();
-		listarPrograma();
 		adicionarJLabel();
 		adicionarJTextFild();
 		adicionarButtonVoltar();
@@ -67,50 +61,8 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 		add(jLabel);
 	}
 
-	private void listarPrograma() {
-
-		DefaultTableModel modelo = new DefaultTableModel();
-
-		modelo.addColumn("ID");
-		modelo.addColumn("Nome");
-		modelo.addColumn("Tipo De Canal");
-		modelo.addColumn("Link Ou Número Do Canal");
-
-		List<Canal> canais = centralDeInformacoes.getTodosOsCanais();
-
-		Collections.sort(canais);
-
-		Object[] linhas = new Object[canais.size()];
-		for (Canal canal : canais) {
-			Object[] linha = new Object[4];
-			linha[0] = canal.getId();
-			linha[1] = canal.getNome();
-			linha[2] = canal.getTipoDoCanal();
-			linha[3] = canal.getLinkOuCanal();
-			modelo.addRow(linha);
-		}
-
-		JTable tabela = new JTable(modelo);
-		tabela.setBackground(Color.green);
-		JScrollPane painelTabela = new JScrollPane(tabela);
-		painelTabela.setBounds(40, 100, 800, 190);
-		add(painelTabela);
-	}
-
 	private void adicionarJLabel() {
 
-		AdicionarJLabel nome = new AdicionarJLabel();
-		add(nome.adicionarJLabel("Nome Do Programa:", 40, 300, 220, 30));
-		
-		AdicionarJLabel idDoCanal = new AdicionarJLabel();
-		add(idDoCanal.adicionarJLabel("ID Do Canal:", 40, 350, 220, 30));
-		
-		AdicionarJLabel diasDaSemana = new AdicionarJLabel();
-		add(diasDaSemana.adicionarJLabel("Dia/s Do Programa:", 40, 400, 220, 30));
-		
-		AdicionarJLabel horarioDoPrograma = new AdicionarJLabel();
-		add(horarioDoPrograma.adicionarJLabel("Horario Do Programa:", 40, 450, 220, 30));
-		
 		AdicionarJLabel genero = new AdicionarJLabel();
 		add(genero.adicionarJLabel("Genero Do Programa:", 40, 500, 220, 30));
 		
@@ -118,13 +70,13 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 		add(temporada.adicionarJLabel("Temporada:", 40, 550, 220, 30));
 	}
 
-	private void adicionarJTextFild() {
+	private void adicionarJTextFild() {		
 
 		campoNomeDoPrograma = new JTextField();
 		campoNomeDoPrograma.setBounds(300, 300, 200, 30);
 		campoNomeDoPrograma.setText(this.programaSeriesRegulares.getNome());
 		add(campoNomeDoPrograma);
-
+		
 		campoIDCanal = new JTextField();
 		campoIDCanal.setBounds(300, 350, 200, 30);
 		campoIDCanal.setText(String.valueOf(this.programaSeriesRegulares.getCanal().getId()));
@@ -157,7 +109,6 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 		
 		campoID = new JTextField();
 		campoID.setText(String.valueOf(this.programaSeriesRegulares.getId()));
-		
 	}
 
 	private void adicionarButtonVoltar() {
@@ -199,6 +150,7 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 			}
 		};
 	}
+	
 
 	public JTextField getCampoNomeDoPrograma() {
 		return campoNomeDoPrograma;
@@ -239,7 +191,5 @@ public class TelaEditarCadastroDeProgramaSeriesRegulares extends JanelaTelaCadas
 
 	public JTextField getCampoID() {
 		return campoID;
-	}
-	
-	
+	}	
 }
